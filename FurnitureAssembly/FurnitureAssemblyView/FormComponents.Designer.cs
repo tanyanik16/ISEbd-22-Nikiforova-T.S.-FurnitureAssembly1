@@ -86,6 +86,7 @@ namespace FurnitureAssemblyView
             this.dataGridView.RowTemplate.Height = 29;
             this.dataGridView.Size = new System.Drawing.Size(470, 426);
             this.dataGridView.TabIndex = 4;
+            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             // 
             // FormComponents
             // 
