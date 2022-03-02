@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureAssemblyBusinessLo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureAssemblyListImplement", "FurnitureAssemblyListImplement\FurnitureAssemblyListImplement.csproj", "{CDE435DC-ED64-4482-AF5C-C7F0F2752BB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureAssemblyFileImplement", "FurnitureAssemblyFileImplement\FurnitureAssemblyFileImplement.csproj", "{2D36BD9F-24C1-4FA9-AB5E-488F7EBACE66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureAssemblyFileImplement", "FurnitureAssemblyFileImplement\FurnitureAssemblyFileImplement.csproj", "{2D36BD9F-24C1-4FA9-AB5E-488F7EBACE66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
