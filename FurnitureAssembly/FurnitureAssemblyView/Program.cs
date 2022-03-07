@@ -50,7 +50,12 @@ namespace FurnitureAssemblyView
             HierarchicalLifetimeManager());
             currentContainer.RegisterType<IFurnitureLogic, FurnitureLogic>(new
             HierarchicalLifetimeManager());
-            
+            currentContainer.RegisterType<IStorehouseLogic, StorehouseLogic>(new
+         HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IStorehouseStorage, StorehouseStorage>(new
+            HierarchicalLifetimeManager());
+
+
             return currentContainer;
         }
 
