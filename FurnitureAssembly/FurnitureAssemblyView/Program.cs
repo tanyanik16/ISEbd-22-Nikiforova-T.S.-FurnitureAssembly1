@@ -2,7 +2,8 @@ using System;
 using FurnitureAssemblyBusinessLogic.BusinessLogics;
 using FurnitureAssemblyContracts.BusinessLogicsContracts;
 using FurnitureAssemblyContracts.StoragesContracts;
-using FurnitureAssemblyListImplement.Implements;
+using FurnitureAssemblyFileImplement.Implements;
+using FurnitureAssemblyFileImplement;
 using System.Windows.Forms;
 using Unity;
 using Unity.Lifetime;
@@ -32,7 +33,14 @@ namespace FurnitureAssemblyView
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.ApplicationExit += ApplicationExit;
+            AppDomain.CurrentDomain.UnhandledException += (o, e) => { if (e.IsTerminating) ApplicationExit(null, null); };
+            Application.ThreadException += (o, e) => { Application.Exit(); };
             Application.Run(Container.Resolve<FormMain>());
+        }
+        private static void ApplicationExit(object sender, EventArgs e)
+        {
+            FileDataListSingleton.SaveAll();
         }
 
         private static IUnityContainer BuildUnityContainer()
