@@ -58,9 +58,14 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
             using var transaction = context.Database.BeginTransaction();
             try
             {
-                context.Furnitures.Add(CreateModel(model, new Furniture(),
-                context));
+               Furniture furniture = new Furniture()
+                {
+                   FurnitureName = model.FurnitureName,
+                    Price = model.Price
+                };
+                context.Furnitures.Add(furniture);
                 context.SaveChanges();
+                CreateModel(model, furniture, context);
                 transaction.Commit();
             }
             catch

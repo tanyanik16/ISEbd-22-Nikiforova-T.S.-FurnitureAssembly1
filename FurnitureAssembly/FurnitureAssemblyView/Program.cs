@@ -40,7 +40,7 @@ namespace FurnitureAssemblyView
         }
         private static void ApplicationExit(object sender, EventArgs e)
         {
-            FileDataListSingleton.SaveAll();
+           FileDataListSingleton.SaveAll();
         }
 
         private static IUnityContainer BuildUnityContainer()
