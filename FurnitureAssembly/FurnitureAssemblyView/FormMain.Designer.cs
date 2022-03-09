@@ -38,7 +38,6 @@ namespace FurnitureAssemblyView
             this.справочникToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.компонентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.мебельToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.пополнениеСкладаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnIdFurniture = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,8 +47,8 @@ namespace FurnitureAssemblyView
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDateCreate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDateEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.пополнениеСкладаToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.складыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.пополнениеСкладаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -130,21 +129,16 @@ namespace FurnitureAssemblyView
             // компонентыToolStripMenuItem
             // 
             this.компонентыToolStripMenuItem.Name = "компонентыToolStripMenuItem";
-            this.компонентыToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.компонентыToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
             this.компонентыToolStripMenuItem.Text = "Компоненты";
             this.компонентыToolStripMenuItem.Click += new System.EventHandler(this.компонентыToolStripMenuItem_Click);
             // 
             // мебельToolStripMenuItem
             // 
             this.мебельToolStripMenuItem.Name = "мебельToolStripMenuItem";
-            this.мебельToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.мебельToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
             this.мебельToolStripMenuItem.Text = "Мебель";
             this.мебельToolStripMenuItem.Click += new System.EventHandler(this.мебельToolStripMenuItem_Click);
-            // 
-            // пополнениеСкладаToolStripMenuItem
-            // 
-            this.пополнениеСкладаToolStripMenuItem.Name = "пополнениеСкладаToolStripMenuItem";
-            this.пополнениеСкладаToolStripMenuItem.Size = new System.Drawing.Size(14, 24);
             // 
             // dataGridView
             // 
@@ -222,20 +216,7 @@ namespace FurnitureAssemblyView
             this.ColumnDateEnd.MinimumWidth = 6;
             this.ColumnDateEnd.Name = "ColumnDateEnd";
             this.ColumnDateEnd.Width = 125;
-            // 
-            // пополнениеСкладаToolStripMenuItem1
-            // 
-            this.пополнениеСкладаToolStripMenuItem1.Name = "пополнениеСкладаToolStripMenuItem1";
-            this.пополнениеСкладаToolStripMenuItem1.Size = new System.Drawing.Size(162, 24);
-            this.пополнениеСкладаToolStripMenuItem1.Text = "Пополнение склада";
-            this.пополнениеСкладаToolStripMenuItem1.Click += new System.EventHandler(this.пополнениеСкладаToolStripMenuItem1_Click);
-            // 
-            // складыToolStripMenuItem
-            // 
-            this.складыToolStripMenuItem.Name = "складыToolStripMenuItem";
-            this.складыToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.складыToolStripMenuItem.Text = "Склады";
-            this.складыToolStripMenuItem.Click += new System.EventHandler(this.складыToolStripMenuItem_Click_1);
+           
             // 
             // FormMain
             // 
