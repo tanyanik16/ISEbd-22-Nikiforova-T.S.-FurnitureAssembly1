@@ -15,6 +15,7 @@ namespace FurnitureAssemblyContracts.ViewModels
         public string FurnitureName { get; set; }
         [DisplayName("Цена")]
         public decimal Price { get; set; }
+        [DisplayName("Компоненты")]
         public Dictionary<int, (string, int)> FurnitureComponents { get; set; }
     }
 }

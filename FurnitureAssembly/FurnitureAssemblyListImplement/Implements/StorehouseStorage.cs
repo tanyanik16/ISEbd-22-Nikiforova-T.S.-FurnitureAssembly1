@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FurnitureAssemblyContracts.BindingModels;
+﻿using FurnitureAssemblyContracts.BindingModels;
 using FurnitureAssemblyContracts.StoragesContracts;
 using FurnitureAssemblyContracts.ViewModels;
 using FurnitureAssemblyListImplement.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FurnitureAssemblyListImplement.Implements
 {
@@ -155,6 +153,9 @@ namespace FurnitureAssemblyListImplement.Implements
                 StorehouseComponents = storehouseComponents
             };
         }
-
+        public bool WriteOffFromStorehouses(Dictionary<int, (string, int)> components, int writeOffCount)
+        {
+            return false;
+        }
     }
 }

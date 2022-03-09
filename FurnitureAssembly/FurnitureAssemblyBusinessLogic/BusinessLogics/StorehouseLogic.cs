@@ -20,6 +20,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
         {
             _storehouseStorage = storehouseStorage;
             _componentStorage = componentStorage;
+
         }
         public List<StorehouseViewModel> Read(StorehouseBindingModel model)
         {

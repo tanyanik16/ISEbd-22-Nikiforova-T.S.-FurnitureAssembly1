@@ -14,14 +14,17 @@ namespace FurnitureAssemblyFileImplement
         private readonly string ComponentFileName = "Component.xml";
         private readonly string OrderFileName = "Order.xml";
         private readonly string FurnitureFileName = "Furniture.xml";
+        private readonly string StorehouseFileName = "Storehouse.xml";
         public List<Component> Components { get; set; }
         public List<Order> Orders { get; set; }
         public List<Furniture> Furnitures { get; set; }
+        public List<Storehouse> Storehouses { get; set; }
         private FileDataListSingleton()
         {
             Components = LoadComponents();
             Orders = LoadOrders();
             Furnitures = LoadFurnitures();
+            Storehouses = LoadStorehouses();
         }
         public static FileDataListSingleton GetInstance()
         {
@@ -36,12 +39,42 @@ namespace FurnitureAssemblyFileImplement
             GetInstance().SaveComponents();
             GetInstance().SaveOrders();
             GetInstance().SaveFurnitures();
+            GetInstance().SaveStorehouses();
         }
         ~FileDataListSingleton()
         {
             SaveComponents();
             SaveOrders();
             SaveFurnitures();
+            SaveStorehouses();
+        }
+        private List<Storehouse> LoadStorehouses()
+        {
+            var list = new List<Storehouse>();
+            if (File.Exists(StorehouseFileName))
+            {
+                var xDocument = XDocument.Load(StorehouseFileName);
+                var xElements = xDocument.Root.Elements("Storehouse").ToList();
+                foreach (var elem in xElements)
+                {
+                    var WHComp = new Dictionary<int, int>();
+                    foreach (var component in
+                   elem.Element("StorehouseComponents").Elements("StorehouseComponent").ToList())
+                    {
+                        WHComp.Add(Convert.ToInt32(component.Element("Key").Value),
+                       Convert.ToInt32(component.Element("Value").Value));
+                    }
+                    list.Add(new Storehouse
+                    {
+                        Id = Convert.ToInt32(elem.Attribute("Id").Value),
+                        StorehouseName = elem.Element("StorehouseName").Value,
+                        ResponsiblePerson = elem.Element("ResponsiblePerson").Value,
+                        DateCreate = Convert.ToDateTime(elem.Element("DateCreate").Value),
+                        StorehouseComponents = WHComp
+                    });
+                }
+            }
+            return list;
         }
         private List<Component> LoadComponents()
         {
@@ -96,7 +129,7 @@ namespace FurnitureAssemblyFileImplement
                         Sum = Convert.ToDecimal(elem.Element("Sum").Value),
                         Status = status,
                         DateCreate = Convert.ToDateTime(elem.Element("DateCreate").Value),
-                        DateImplement = Convert.ToDateTime(elem.Element("DateImplement").Value)
+                        DateImplement = !string.IsNullOrEmpty(elem.Element("DateImplement").Value) ? Convert.ToDateTime(elem.Element("DateImplement").Value) : (DateTime?)null
                     });
                 }
             }
@@ -128,6 +161,31 @@ namespace FurnitureAssemblyFileImplement
                 }
             }
             return list;
+        }
+        private void SaveStorehouses()
+        {
+            if (Storehouses != null)
+            {
+                var xElement = new XElement("Storehouses");
+                foreach (var storehouse in Storehouses)
+                {
+                    var storehouseElement = new XElement("StorehouseComponents");
+                    foreach (var component in storehouse.StorehouseComponents)
+                    {
+                        storehouseElement.Add(new XElement("StorehouseComponent",
+                        new XElement("Key", component.Key),
+                        new XElement("Value", component.Value)));
+                    }
+                    xElement.Add(new XElement("Storehouse",
+                     new XAttribute("Id", storehouse.Id),
+                     new XElement("StorehouseName", storehouse.StorehouseName),
+                     new XElement("ResponsiblePerson", storehouse.ResponsiblePerson),
+                     new XElement("DateCreate", storehouse.DateCreate),
+                     storehouseElement));
+                }
+                var xDocument = new XDocument(xElement);
+                xDocument.Save(StorehouseFileName);
+            }
         }
         private void SaveComponents()
         {
