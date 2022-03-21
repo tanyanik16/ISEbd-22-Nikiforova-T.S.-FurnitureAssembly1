@@ -9,9 +9,9 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 
-namespace FurnitureAssemblyBusinessLogic.OfficePackage.Imlements
+namespace FurnitureAssemblyBusinessLogic.OfficePackage.Implements
 {
-   
+
         public class SaveToWord : FurnitureSaveToWord
         {
             private WordprocessingDocument _wordDocument;
