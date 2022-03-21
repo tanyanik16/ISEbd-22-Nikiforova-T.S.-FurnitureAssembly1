@@ -102,7 +102,7 @@ namespace FurnitureAssemblyFileImplement.Implements
                 DateCreate = order.DateCreate,
                 DateImplement = order.DateImplement,
                 Count = order.Count,
-                FurnitureName = furnitureName
+                FurnitureName = source.Furnitures.FirstOrDefault(rec => rec.Id == order.FurnitureId)?.FurnitureName
             };
         }
     }
