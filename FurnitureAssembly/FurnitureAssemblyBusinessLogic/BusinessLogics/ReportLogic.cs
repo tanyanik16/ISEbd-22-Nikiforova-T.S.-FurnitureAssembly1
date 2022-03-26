@@ -53,7 +53,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
                 {
                     if (furniture.FurnitureComponents.ContainsKey(component.Id))
                     {
-                        record.Furnitures.Add(new Tuple<string, int>(component.ComponentName, furniture.FurnitureComponents[component.Id].Item2));
+                        record.Components.Add(new Tuple<string, int>(component.ComponentName, furniture.FurnitureComponents[component.Id].Item2));
                         record.TotalCount +=
                        furniture.FurnitureComponents[component.Id].Item2;
                     }
@@ -94,7 +94,8 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             _saveToWord.CreateDoc(new WordInfo
             {
                 FileName = model.FileName,
-                Components = _componentStorage.GetFullList()
+                Title = "Список компонент",
+               Furnitures = _furnitureStorage.GetFullList()
             });
         }
         /// <summary>

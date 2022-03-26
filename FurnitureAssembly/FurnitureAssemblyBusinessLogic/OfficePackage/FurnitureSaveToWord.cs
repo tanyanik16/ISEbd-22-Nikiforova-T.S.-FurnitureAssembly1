@@ -23,12 +23,19 @@ WordTextProperties { Bold = true, Size = "24", }) },
                     JustificationType = WordJustificationType.Center
                 }
             });
-            foreach (var component in info.Components)
+            foreach (var furniture in info.Furnitures)
             {
                 CreateParagraph(new WordParagraph
                 {
                     Texts = new List<(string, WordTextProperties)> {
-(component.ComponentName, new WordTextProperties { Size = "24", }) },
+                      (furniture.FurnitureName + ": ", new WordTextProperties {
+                        Size = "24",
+                        Bold = true
+                        }),
+                        (Convert.ToInt32(furniture.Price).ToString(), new WordTextProperties {
+                        Size = "24"
+                        })
+                    },
                     TextProperties = new WordTextProperties
                     {
                         Size = "24",

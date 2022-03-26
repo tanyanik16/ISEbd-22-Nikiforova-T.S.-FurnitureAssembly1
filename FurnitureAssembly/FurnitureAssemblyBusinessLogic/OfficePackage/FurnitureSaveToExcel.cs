@@ -37,24 +37,24 @@ namespace FurnitureAssemblyBusinessLogic.OfficePackage
                 {
                     ColumnName = "A",
                     RowIndex = rowIndex,
-                    Text = pc.ComponentName,
+                    Text = pc.FurnitureName,
                     StyleInfo = ExcelStyleInfoType.Text
                 });
                 rowIndex++;
-                foreach (var furniture in pc.Furnitures)
+                foreach (var component in pc.Components)
                 {
                     InsertCellInWorksheet(new ExcelCellParameters
                     {
                         ColumnName = "B",
                         RowIndex = rowIndex,
-                        Text = furniture.Item1,
+                        Text = component.Item1,
                         StyleInfo = ExcelStyleInfoType.TextWithBroder
                     });
                     InsertCellInWorksheet(new ExcelCellParameters
                     {
                         ColumnName = "C",
                         RowIndex = rowIndex,
-                        Text = furniture.Item2.ToString(),
+                        Text = component.Item2.ToString(),
                         StyleInfo = ExcelStyleInfoType.TextWithBroder
                     });
                     rowIndex++;
