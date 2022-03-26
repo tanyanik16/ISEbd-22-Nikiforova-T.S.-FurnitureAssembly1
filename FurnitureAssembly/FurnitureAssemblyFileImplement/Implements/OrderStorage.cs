@@ -74,6 +74,7 @@ namespace FurnitureAssemblyFileImplement.Implements
 
         private Order CreateModel(OrderBindingModel model, Order order)
         {
+            order.ClientId = (int)model.ClientId;
             order.FurnitureId = model.FurnitureId;
             order.Status = model.Status;
             order.Sum = model.Sum;
@@ -97,6 +98,7 @@ namespace FurnitureAssemblyFileImplement.Implements
 
             return new OrderViewModel
             {
+                ClientId = order.ClientId,
                 Id = order.Id,
                 FurnitureId = order.FurnitureId,
                 Status = order.Status,
@@ -104,6 +106,7 @@ namespace FurnitureAssemblyFileImplement.Implements
                 DateCreate = order.DateCreate,
                 DateImplement = order.DateImplement,
                 Count = order.Count,
+                ClientFIO = source.Clients.FirstOrDefault(rec => rec.Id == order.ClientId)?.ClientFIO,
                 FurnitureName = source.Furnitures.FirstOrDefault(rec => rec.Id == order.FurnitureId)?.FurnitureName
             };
         }

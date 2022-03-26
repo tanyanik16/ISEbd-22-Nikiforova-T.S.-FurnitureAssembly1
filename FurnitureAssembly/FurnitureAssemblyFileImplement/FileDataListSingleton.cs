@@ -14,14 +14,17 @@ namespace FurnitureAssemblyFileImplement
         private readonly string ComponentFileName = "Component.xml";
         private readonly string OrderFileName = "Order.xml";
         private readonly string FurnitureFileName = "Furniture.xml";
+        private readonly string ClientFileName = "Client.xml";
         public List<Component> Components { get; set; }
         public List<Order> Orders { get; set; }
         public List<Furniture> Furnitures { get; set; }
+        public List<Client> Clients { get; set; }
         private FileDataListSingleton()
         {
             Components = LoadComponents();
             Orders = LoadOrders();
             Furnitures = LoadFurnitures();
+            Clients = LoadClients();
         }
         public static FileDataListSingleton GetInstance()
         {
@@ -36,6 +39,7 @@ namespace FurnitureAssemblyFileImplement
             GetInstance().SaveComponents();
             GetInstance().SaveOrders();
             GetInstance().SaveFurnitures();
+            GetInstance().SaveClients();
         }
         ~FileDataListSingleton()
         {
@@ -91,12 +95,33 @@ namespace FurnitureAssemblyFileImplement
                     list.Add(new Order
                     {
                         Id = Convert.ToInt32(elem.Attribute("Id").Value),
+                        ClientId = Convert.ToInt32(elem.Element("ClientId").Value),
                         FurnitureId = Convert.ToInt32(elem.Element("FurnitureId").Value),
                         Count = Convert.ToInt32(elem.Element("Count").Value),
                         Sum = Convert.ToDecimal(elem.Element("Sum").Value),
                         Status = status,
                         DateCreate = Convert.ToDateTime(elem.Element("DateCreate").Value),
                         DateImplement = !string.IsNullOrEmpty(elem.Element("DateImplement").Value) ? Convert.ToDateTime(elem.Element("DateImplement").Value) : (DateTime?)null
+                    });
+                }
+            }
+            return list;
+        }
+        private List<Client> LoadClients()
+        {
+            var list = new List<Client>();
+            if (File.Exists(ClientFileName))
+            {
+                XDocument xDocument = XDocument.Load(ClientFileName);
+                var xElements = xDocument.Root.Elements("Client").ToList();
+                foreach (var elem in xElements)
+                {
+                    list.Add(new Client
+                    {
+                        Id = Convert.ToInt32(elem.Attribute("Id").Value),
+                        ClientFIO = elem.Element("ClientFIO").Value,
+                        Email = elem.Element("Email").Value,
+                        Password = elem.Element("Password").Value,
                     });
                 }
             }
@@ -128,6 +153,23 @@ namespace FurnitureAssemblyFileImplement
                 }
             }
             return list;
+        }
+        private void SaveClients()
+        {
+            if (Clients != null)
+            {
+                var xElement = new XElement("Clients");
+                foreach (var client in Clients)
+                {
+                    xElement.Add(new XElement("Client",
+                    new XAttribute("Id", client.Id),
+                    new XElement("ClientFIO", client.ClientFIO),
+                    new XElement("Email", client.Email),
+                    new XElement("Password", client.Password)));
+                }
+                XDocument xDocument = new XDocument(xElement);
+                xDocument.Save(ClientFileName);
+            }
         }
         private void SaveComponents()
         {

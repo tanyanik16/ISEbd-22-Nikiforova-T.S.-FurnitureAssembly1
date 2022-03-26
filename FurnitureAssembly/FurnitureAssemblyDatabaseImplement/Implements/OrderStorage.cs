@@ -105,6 +105,7 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
             order.Status = model.Status;
             order.DateCreate = model.DateCreate;
             order.DateImplement = model.DateImplement;
+
             return order;
         }
         private static OrderViewModel CreateModel(Order order)
