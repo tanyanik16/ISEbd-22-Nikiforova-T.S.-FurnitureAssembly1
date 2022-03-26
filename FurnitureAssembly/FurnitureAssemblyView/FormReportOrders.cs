@@ -1,9 +1,16 @@
-﻿using FurnitureAssemblyContracts.BindingModels;
-using FurnitureAssemblyContracts.BusinessLogicsContracts;
-using Microsoft.Reporting.WinForms;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using FurnitureAssemblyContracts.BindingModels;
+using FurnitureAssemblyContracts.BusinessLogicsContracts;
+using Microsoft.Reporting.WinForms;
 
 namespace FurnitureAssemblyView
 {
@@ -20,10 +27,11 @@ namespace FurnitureAssemblyView
                 Dock = DockStyle.Fill
             };
             reportViewer.LocalReport.LoadReportDefinition(new
-           FileStream("Report.rdlc", FileMode.Open));
+           FileStream("C:\\Users\\tanya\\source\\repos\\ISEbd-22-Nikiforova-T.S.-FurnitureAssembly1\\FurnitureAssembly\\FurnitureAssemblyView\\Report.rdlc", FileMode.Open));
             Controls.Clear();
-            Controls.Add(reportViewer);
             Controls.Add(panel);
+            Controls.Add(reportViewer);
+            
         }
 
         private void buttonMake_Click(object sender, EventArgs e)
@@ -59,8 +67,7 @@ dateTimePickerTo.Value.ToShortDateString()) };
             }
 
         }
-
-        private void ButtonToPdf_Click(object sender, EventArgs e)
+        private void buttonToPdf_Click_1(object sender, EventArgs e)
         {
             if (dateTimePickerFrom.Value.Date >= dateTimePickerTo.Value.Date)
             {
@@ -84,8 +91,7 @@ dateTimePickerTo.Value.ToShortDateString()) };
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Ошибка",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

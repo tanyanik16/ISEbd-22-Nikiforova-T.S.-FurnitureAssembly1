@@ -69,6 +69,7 @@ namespace FurnitureAssemblyView
             this.buttonToPdf.TabIndex = 3;
             this.buttonToPdf.Text = "В Pdf";
             this.buttonToPdf.UseVisualStyleBackColor = true;
+            this.buttonToPdf.Click += new System.EventHandler(this.buttonToPdf_Click_1);
             // 
             // panel
             // 
@@ -76,16 +77,16 @@ namespace FurnitureAssemblyView
             this.panel.Controls.Add(this.buttonToPdf);
             this.panel.Controls.Add(this.dateTimePickerTo);
             this.panel.Controls.Add(this.buttonMake);
-            this.panel.Location = new System.Drawing.Point(12, 12);
+            this.panel.Location = new System.Drawing.Point(-2, 2);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(864, 76);
+            this.panel.Size = new System.Drawing.Size(1131, 57);
             this.panel.TabIndex = 4;
             // 
             // FormReportOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(982, 450);
+            this.ClientSize = new System.Drawing.Size(1131, 761);
             this.Controls.Add(this.panel);
             this.Name = "FormReportOrders";
             this.Text = "Заказы";
