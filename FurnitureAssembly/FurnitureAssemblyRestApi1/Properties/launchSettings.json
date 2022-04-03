@@ -4,8 +4,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:56944",
-      "sslPort": 44385
+      "applicationUrl": "http://localhost:30538",
+      "sslPort": 44345
     }
   },
   "profiles": {
@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "FurnitureAssemblyRestApi": {
+    "FurnitureAssemblyRestApi1": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

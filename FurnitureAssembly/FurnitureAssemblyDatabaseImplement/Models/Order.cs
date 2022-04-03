@@ -13,6 +13,7 @@ namespace FurnitureAssemblyDatabaseImplement.Models
     {
         public int Id { get; set; }
         public int ClientId { get; set; }
+        [Required]
         public int FurnitureId { get; set; }
         [Required]
         public int Count { get; set; }

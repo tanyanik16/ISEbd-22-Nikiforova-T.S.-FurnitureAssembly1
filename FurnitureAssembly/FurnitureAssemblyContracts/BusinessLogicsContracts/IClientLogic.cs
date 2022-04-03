@@ -10,16 +10,10 @@ namespace FurnitureAssemblyContracts.BusinessLogicsContracts
 {
     public interface IClientLogic
     {
-        List<ClientViewModel> GetFullList();
+        List<ClientViewModel> Read(ClientBindingModel model);
+            void CreateOrUpdate(ClientBindingModel model);
 
-        List<ClientViewModel> GetFilteredList(ClientBindingModel model);
-
-        ClientViewModel GetElement(ClientBindingModel model);
-
-        void Insert(ClientBindingModel model);
-
-        void Update(ClientBindingModel model);
-
-        void Delete(ClientBindingModel model);
+            void Delete(ClientBindingModel model);
+      
     }
 }

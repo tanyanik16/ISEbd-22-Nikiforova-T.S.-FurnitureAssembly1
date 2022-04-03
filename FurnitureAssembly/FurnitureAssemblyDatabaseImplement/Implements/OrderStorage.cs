@@ -16,11 +16,20 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
         public List<OrderViewModel> GetFullList()
         {
             using var context = new FurnitureAssemblyDatabase();
-            return context.Orders
-            .Include(rec => rec.Furniture)
-            .ToList()
-            .Select(CreateModel)
-            .ToList();
+            return context.Orders.Include(rec => rec.Furniture)
+                .Select(rec => new OrderViewModel
+                {
+                    Id = rec.Id,
+                  FurnitureId = rec.FurnitureId,
+                    FurnitureName = rec.Furniture.FurnitureName,
+                    Count = rec.Count,
+                    ClientFIO = rec.Client.ClientFIO,
+                    Sum = rec.Sum,
+                    Status = rec.Status,
+                    DateCreate = rec.DateCreate,
+                    DateImplement = rec.DateImplement,
+                })
+                .ToList();
         }
         public List<OrderViewModel> GetFilteredList(OrderBindingModel model)
         {
@@ -28,12 +37,27 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
             {
                 return null;
             }
-            using var context = new FurnitureAssemblyDatabase();
-            return context.Orders
-            .Include(rec => rec.Furniture)
-            .Where(rec => rec.Id.Equals(model.Id) || rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo)
-            .Select(CreateModel)
-            .ToList();
+            using var context = new FurnitureAssemblyDatabase();{
+            return context.Orders.Include(rec => rec.Furniture).Include(rec => rec.Client)
+                 .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.DateCreate.Date == model.DateCreate.Date) ||
+                 (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate.Date
+                 >= model.DateFrom.Value.Date && rec.DateCreate.Date <= model.DateTo.Value.Date) ||
+                 (model.ClientId.HasValue && rec.ClientId == model.ClientId))
+                 .Select(rec => new OrderViewModel
+                 {
+                     Id = rec.Id,
+                     ClientId = rec.ClientId,
+                     ClientFIO = rec.Client.ClientFIO,
+                     FurnitureId = rec.FurnitureId,
+                     FurnitureName = rec.Furniture.FurnitureName,
+                     Count = rec.Count,
+                     Sum = rec.Sum,
+                     Status = rec.Status,
+                     DateCreate = rec.DateCreate,
+                     DateImplement = rec.DateImplement,
+                 })
+                 .ToList();
+        }
         }
         public OrderViewModel GetElement(OrderBindingModel model)
         {
@@ -41,46 +65,62 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
             {
                 return null;
             }
-            using var context = new FurnitureAssemblyDatabase();
-            var order = context.Orders
-            .FirstOrDefault(rec => rec.Id == model.Id);
-            return order != null ? CreateModel(order) : null;
+            using (FurnitureAssemblyDatabase context = new FurnitureAssemblyDatabase())
+            {
+                Order order = context.Orders.Include(rec => rec.Furniture)
+                .FirstOrDefault(rec => rec.Id == model.Id);
+                return order != null ?
+                new OrderViewModel
+                {
+                    Id = order.Id,
+                    FurnitureId = order.FurnitureId,
+                    FurnitureName = order.Furniture.FurnitureName,
+                    Count = order.Count,
+                    Sum = order.Sum,
+                    Status = order.Status,
+                    DateCreate = order.DateCreate,
+                    DateImplement = order.DateImplement,
+                } :
+                null;
+            }
         }
         public void Insert(OrderBindingModel model)
         {
-            using var context = new FurnitureAssemblyDatabase();
-            using var transaction = context.Database.BeginTransaction();
-            try
+            using (FurnitureAssemblyDatabase context = new FurnitureAssemblyDatabase())
             {
-                context.Orders.Add(CreateModel(model, new Order()));
+                Order order = new Order
+                {
+                    FurnitureId = model.FurnitureId,
+                    Count = model.Count,
+                    ClientId = (int)model.ClientId,
+                    Sum = model.Sum,
+                    Status = model.Status,
+                    DateCreate = model.DateCreate,
+                    DateImplement = model.DateImplement,
+                };
+                context.Orders.Add(order);
                 context.SaveChanges();
-                transaction.Commit();
-            }
-            catch
-            {
-                transaction.Rollback();
-                throw;
+                CreateModel(model, order);
+                context.SaveChanges();
             }
         }
         public void Update(OrderBindingModel model)
         {
-            using var context = new FurnitureAssemblyDatabase();
-            using var transaction = context.Database.BeginTransaction();
-            try
+            using (FurnitureAssemblyDatabase context = new FurnitureAssemblyDatabase())
             {
-                var element = context.Orders.FirstOrDefault(rec => rec.Id == model.Id);
+                Order element = context.Orders.FirstOrDefault(rec => rec.Id == model.Id);
                 if (element == null)
                 {
                     throw new Exception("Элемент не найден");
                 }
+                element.FurnitureId = model.FurnitureId;
+                element.Count = model.Count;
+                element.Sum = model.Sum;
+                element.Status = model.Status;
+                element.DateCreate = model.DateCreate;
+                element.DateImplement = model.DateImplement;
                 CreateModel(model, element);
                 context.SaveChanges();
-                transaction.Commit();
-            }
-            catch
-            {
-                transaction.Rollback();
-                throw;
             }
         }
         public void Delete(OrderBindingModel model)
@@ -99,29 +139,31 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
         }
         private static Order CreateModel(OrderBindingModel model, Order order)
         {
-            order.FurnitureId = model.FurnitureId;
-            order.Count = model.Count;
-            order.Sum = model.Sum;
-            order.Status = model.Status;
-            order.DateCreate = model.DateCreate;
-            order.DateImplement = model.DateImplement;
+            if (model == null)
+            {
+                return null;
+            }
 
+            using (FurnitureAssemblyDatabase context = new FurnitureAssemblyDatabase())
+            {
+               Furniture element = context.Furnitures.FirstOrDefault(rec => rec.Id == model.FurnitureId);
+                if (element != null)
+                {
+                    if (element.Orders == null)
+                    {
+                        element.Orders = new List<Order>();
+                    }
+                    element.Orders.Add(order);
+                    context.Furnitures.Update(element);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("Элемент не найден");
+                }
+            }
             return order;
         }
-        private static OrderViewModel CreateModel(Order order)
-        {
-            using var context = new FurnitureAssemblyDatabase();
-            return new OrderViewModel
-            {
-                Id = order.Id,
-                FurnitureId = order.FurnitureId,
-                FurnitureName = context.Furnitures.FirstOrDefault(furnitureName => furnitureName.Id == order.FurnitureId)?.FurnitureName,
-                Count = order.Count,
-                Sum = order.Sum,
-                Status = order.Status,
-                DateCreate = order.DateCreate,
-                DateImplement = order.DateImplement
-            };
-        }
     }
-}
+    }
+

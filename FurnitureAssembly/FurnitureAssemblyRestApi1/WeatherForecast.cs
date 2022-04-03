@@ -1,6 +1,6 @@
 using System;
 
-namespace FurnitureAssemblyRestApi
+namespace FurnitureAssemblyRestApi1
 {
     public class WeatherForecast
     {

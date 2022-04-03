@@ -1,21 +1,19 @@
-﻿using FurnitureAssemblyContracts.BindingModels;
-using FurnitureAssemblyContracts.BusinessLogicsContracts;
-using FurnitureAssemblyContracts.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using FurnitureAssemblyContracts.BindingModels;
+using FurnitureAssemblyContracts.BusinessLogicsContracts;
+using FurnitureAssemblyContracts.StoragesContracts;
+using FurnitureAssemblyContracts.ViewModels;
 
 namespace FurnitureAssemblyBusinessLogic.BusinessLogics
 {
-    public class ClientLogic
+    public class ClientLogic : IClientLogic
     {
-        private readonly IClientLogic _clientStorage;
-
-        public ClientLogic(IClientLogic clientStorage)
+        private readonly IClientStorage _clientStorage;
+        public ClientLogic(IClientStorage clientStorage)
         {
             _clientStorage = clientStorage;
         }
-
         public List<ClientViewModel> Read(ClientBindingModel model)
         {
             if (model == null)

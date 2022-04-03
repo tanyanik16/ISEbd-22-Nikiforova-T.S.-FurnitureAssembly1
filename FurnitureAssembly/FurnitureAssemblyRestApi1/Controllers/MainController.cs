@@ -1,10 +1,13 @@
 using FurnitureAssemblyContracts.BindingModels;
 using FurnitureAssemblyContracts.BusinessLogicsContracts;
+using FurnitureAssemblyContracts.StoragesContracts;
 using FurnitureAssemblyContracts.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
-
-namespace FurnitureAssemblyRestApi.Controllers
+namespace ComputerShopRestApi.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
@@ -18,11 +21,15 @@ namespace FurnitureAssemblyRestApi.Controllers
             _furniture = furniture;
         }
         [HttpGet]
-        public List<FurnitureViewModel> GetFurnitureList() => _furniture.Read(null)?.ToList();
+        public List<FurnitureViewModel> GetProductList() => _furniture.Read(null)?.ToList();
         [HttpGet]
-        public FurnitureViewModel GetFurniture(int furnitureId) => _furniture.Read(new FurnitureBindingModel { Id = furnitureId })?[0];
+        public FurnitureViewModel GetProduct(int furnitureId) => _furniture.Read(new
+        FurnitureBindingModel
+        { Id = furnitureId })?[0];
         [HttpGet]
-        public List<OrderViewModel> GetOrders(int clientId) => _order.Read(new  OrderBindingModel  { ClientId = clientId });
+        public List<OrderViewModel> GetOrders(int clientId) => _order.Read(new
+        OrderBindingModel
+        { ClientId = clientId });
         [HttpPost]
         public void CreateOrder(CreateOrderBindingModel model) =>
        _order.CreateOrder(model);
