@@ -71,8 +71,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
         {
             return _orderStorage.GetFilteredList(new OrderBindingModel
             {
-                DateFrom =
-           model.DateFrom,
+                DateFrom =model.DateFrom,
                 DateTo = model.DateTo
             })
             .Select(x => new ReportOrdersViewModel

@@ -26,8 +26,7 @@ namespace FurnitureAssemblyView
             {
                 Dock = DockStyle.Fill
             };
-            reportViewer.LocalReport.LoadReportDefinition(new
-           FileStream("C:\\Users\\tanya\\source\\repos\\ISEbd-22-Nikiforova-T.S.-FurnitureAssembly1\\FurnitureAssembly\\FurnitureAssemblyView\\Report.rdlc", FileMode.Open));
+            reportViewer.LocalReport.LoadReportDefinition(new FileStream("C:\\Users\\tanya\\source\\repos\\ISEbd-22-Nikiforova-T.S.-FurnitureAssembly1\\FurnitureAssembly\\FurnitureAssemblyView\\Report.rdlc", FileMode.Open));
             Controls.Clear();
             Controls.Add(panel);
             Controls.Add(reportViewer);

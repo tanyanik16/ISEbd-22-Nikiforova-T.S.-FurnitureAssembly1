@@ -31,10 +31,9 @@ namespace FurnitureAssemblyView
         {
             this.buttonSaveToExcel = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Component = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Furniture = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,24 +51,15 @@ namespace FurnitureAssemblyView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnId,
             this.Component,
             this.Furniture,
-            this.ColumnCount});
+            this.Count});
             this.dataGridView.Location = new System.Drawing.Point(21, 56);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 29;
             this.dataGridView.Size = new System.Drawing.Size(493, 382);
             this.dataGridView.TabIndex = 1;
-            // 
-            // ColumnId
-            // 
-            this.ColumnId.HeaderText = "ColumnId";
-            this.ColumnId.MinimumWidth = 6;
-            this.ColumnId.Name = "ColumnId";
-            this.ColumnId.Visible = false;
-            this.ColumnId.Width = 125;
             // 
             // Component
             // 
@@ -85,12 +75,12 @@ namespace FurnitureAssemblyView
             this.Furniture.Name = "Furniture";
             this.Furniture.Width = 125;
             // 
-            // ColumnCount
+            // Count
             // 
-            this.ColumnCount.HeaderText = "Количество";
-            this.ColumnCount.MinimumWidth = 6;
-            this.ColumnCount.Name = "ColumnCount";
-            this.ColumnCount.Width = 125;
+            this.Count.HeaderText = "Количество";
+            this.Count.MinimumWidth = 6;
+            this.Count.Name = "Count";
+            this.Count.Width = 125;
             // 
             // FormReportFurnitureComponents
             // 
@@ -111,9 +101,8 @@ namespace FurnitureAssemblyView
 
         private System.Windows.Forms.Button buttonSaveToExcel;
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Component;
         private System.Windows.Forms.DataGridViewTextBoxColumn Furniture;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Count;
     }
 }

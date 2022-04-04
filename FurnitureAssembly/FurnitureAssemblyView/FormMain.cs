@@ -21,7 +21,8 @@ namespace FurnitureAssemblyView
         public FormMain(IOrderLogic orderLogic, IReportLogic report)
         {
             InitializeComponent();
-            _orderLogic = orderLogic;
+            
+           this._orderLogic = orderLogic;
             _reportLogic = report;
         }
         private void FormMain_Load(object sender, EventArgs e)
