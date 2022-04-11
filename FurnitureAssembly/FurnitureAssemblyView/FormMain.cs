@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Reporting.WinForms;
 using System.Windows.Forms;
 using FurnitureAssemblyContracts.BindingModels;
 using FurnitureAssemblyContracts.BusinessLogicsContracts;
@@ -16,10 +17,13 @@ namespace FurnitureAssemblyView
     public partial class FormMain : Form
     {
         private readonly IOrderLogic _orderLogic;
-        public FormMain(IOrderLogic orderLogic)
+        private readonly IReportLogic _reportLogic;
+        public FormMain(IOrderLogic orderLogic, IReportLogic report)
         {
             InitializeComponent();
-            _orderLogic = orderLogic;
+            
+           this._orderLogic = orderLogic;
+            _reportLogic = report;
         }
         private void FormMain_Load(object sender, EventArgs e)
         {
@@ -32,12 +36,10 @@ namespace FurnitureAssemblyView
                 var list = _orderLogic.Read(null);
                 if (list != null)
                 {
-                    dataGridView.Rows.Clear();
-                    foreach (var order in list)
-                    {
-                        dataGridView.Rows.Add(new object[] { order.Id, order.FurnitureId, order.FurnitureName, order.Count, order.Sum,
-                            order.Status,order.DateCreate, order.DateImplement});
-                    }
+                    dataGridView.DataSource = list;
+                    dataGridView.Columns[0].Visible = false;
+                    dataGridView.Columns[1].Visible = false;
+                    dataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
             }
             catch (Exception ex)
@@ -133,5 +135,30 @@ namespace FurnitureAssemblyView
         {
             LoadData();
         }
+
+        private void списокКомпонентовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using var dialog = new SaveFileDialog { Filter = "docx|*.docx" };
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                _reportLogic.SaveComponentsToWordFile(new ReportBindingModel
+                {
+                    FileName = dialog.FileName
+                });
+                MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+            }
+        }
+        private void компонентыПоИзделиямToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Program.Container.Resolve<FormReportFurnitureComponents>();
+            form.ShowDialog();
+        }
+        private void списокЗаказовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Program.Container.Resolve<FormReportOrders>();
+            form.ShowDialog();
+        }
+
     }
 }

@@ -96,7 +96,7 @@ namespace FurnitureAssemblyFileImplement
                         Sum = Convert.ToDecimal(elem.Element("Sum").Value),
                         Status = status,
                         DateCreate = Convert.ToDateTime(elem.Element("DateCreate").Value),
-                        DateImplement = Convert.ToDateTime(elem.Element("DateImplement").Value)
+                        DateImplement = !string.IsNullOrEmpty(elem.Element("DateImplement").Value) ? Convert.ToDateTime(elem.Element("DateImplement").Value) : (DateTime?)null
                     });
                 }
             }
