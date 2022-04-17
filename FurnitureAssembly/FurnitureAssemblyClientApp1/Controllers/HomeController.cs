@@ -143,7 +143,7 @@ namespace FurnitureAssemblyClientApp1.Controllers
         public decimal Calc(decimal count, int product)
         {
             FurnitureViewModel prod =
-            APIClient.GetRequest<FurnitureViewModel>($"api/main/getproduct?productId={product}");
+            APIClient.GetRequest<FurnitureViewModel>($"api/main/getproduct?furnitureId={product}");
             return count * prod.Price;
         }
     }
