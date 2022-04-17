@@ -1,6 +1,5 @@
 ﻿using FurnitureAssemblyContracts.BindingModels;
 using FurnitureAssemblyContracts.BusinessLogicsContracts;
-using FurnitureAssemblyContracts.StoragesContracts;
 using FurnitureAssemblyContracts.ViewModels;
 using FurnitureAssemblyContracts.Enums;
 using System;

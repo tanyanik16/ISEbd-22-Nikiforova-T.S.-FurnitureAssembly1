@@ -60,8 +60,7 @@ namespace FurnitureAssemblyView
             HierarchicalLifetimeManager());
             currentContainer.RegisterType<IFurnitureLogic, FurnitureLogic>(new
             HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IClientStorage, ClientStorage>(new
-            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IClientStorage, ClientStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IImplementerLogic, ImplementerLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IImplementerStorage, ImplementerStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IClientLogic, ClientLogic>(new HierarchicalLifetimeManager());

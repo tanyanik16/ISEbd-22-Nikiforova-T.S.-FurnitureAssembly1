@@ -44,7 +44,7 @@ namespace FurnitureAssemblyView
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            var form = Container.Resolve<FormImplementer>();
+            var form = Program.Container.Resolve<FormImplementer>();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 LoadData();
@@ -77,7 +77,7 @@ namespace FurnitureAssemblyView
         {
             if (dataGridView1.SelectedRows.Count == 1)
             {
-                var form = Container.Resolve<FormImplementer>();
+                var form = Program.Container.Resolve<FormImplementer>();
                 form.Id = Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value);
                 if (form.ShowDialog() == DialogResult.OK)
                 {
