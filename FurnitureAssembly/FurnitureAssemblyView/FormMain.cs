@@ -1,4 +1,9 @@
-﻿using System;
+﻿using FurnitureAssemblyContracts.BindingModels;
+using FurnitureAssemblyContracts.BusinessLogicsContracts;
+using FurnitureAssemblyView;
+using FurnitureAssemblyBusinessLogic.BusinessLogics;
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,10 +11,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Reporting.WinForms;
 using System.Windows.Forms;
-using FurnitureAssemblyContracts.BindingModels;
-using FurnitureAssemblyContracts.BusinessLogicsContracts;
 using Unity;
 
 namespace FurnitureAssemblyView
@@ -18,11 +20,15 @@ namespace FurnitureAssemblyView
     {
         private readonly IOrderLogic _orderLogic;
         private readonly IReportLogic _reportLogic;
-        public FormMain(IOrderLogic orderLogic, IReportLogic report)
+        private readonly WorkModeling _workModeling;
+        private readonly IImplementerLogic _implementerLogic;
+        public FormMain(IOrderLogic orderLogic, IReportLogic report, WorkModeling workModeling, IImplementerLogic implementerLogic)
         {
             InitializeComponent();
             _orderLogic = orderLogic;
             _reportLogic = report;
+            _implementerLogic = implementerLogic;
+            _workModeling = workModeling;
         }
         private void FormMain_Load(object sender, EventArgs e)
         {
@@ -165,6 +171,18 @@ namespace FurnitureAssemblyView
         {
             var form = Program.Container.Resolve<FormClient>();
             form.ShowDialog();
+        }
+
+        private void исполнителиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Program.Container.Resolve<FormImplementers>();
+            form.ShowDialog();
+        }
+
+        private void запускРаботToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _workModeling.DoWork(_implementerLogic, _orderLogic);
+            LoadData();
         }
     }
 }

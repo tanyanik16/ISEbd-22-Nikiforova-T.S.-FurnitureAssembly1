@@ -23,6 +23,8 @@ namespace FurnitureAssemblyContracts.ViewModels
         [DisplayName("Клиент")]
         public string ClientFIO { get; set; }
         [DataMember]
+        public int? ImplementerId { get; set; }
+        [DataMember]
         [DisplayName("Мебель")]
         public string FurnitureName { get; set; }
         [DataMember]
@@ -40,5 +42,7 @@ namespace FurnitureAssemblyContracts.ViewModels
         [DataMember]
         [DisplayName("Дата выполнения")]
         public DateTime? DateImplement { get; set; }
+
+        public string ImplementerFIO { get; set; }
     }
 }
