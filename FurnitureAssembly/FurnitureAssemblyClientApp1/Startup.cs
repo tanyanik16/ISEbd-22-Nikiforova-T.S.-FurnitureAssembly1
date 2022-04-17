@@ -9,13 +9,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FurnitureAssemblyClientApp
+namespace FurnitureAssemblyClientApp1
 {
     public class Startup
     {
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            APIClient.Connect(configuration);
         }
 
         public IConfiguration Configuration { get; }

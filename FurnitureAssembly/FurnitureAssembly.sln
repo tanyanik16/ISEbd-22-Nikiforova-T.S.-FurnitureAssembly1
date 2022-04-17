@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureAssemblyFileImplem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureAssemblyDatabaseImplement", "FurnitureAssemblyDatabaseImplement\FurnitureAssemblyDatabaseImplement.csproj", "{1F05B753-C5C4-457C-A129-A2FD709E3BAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureAssemblyRestApi1", "FurnitureAssemblyRestApi1\FurnitureAssemblyRestApi1.csproj", "{4D2A4A72-1C88-4C8C-A303-1A808F7799BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureAssemblyRestApi1", "FurnitureAssemblyRestApi1\FurnitureAssemblyRestApi1.csproj", "{4D2A4A72-1C88-4C8C-A303-1A808F7799BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureAssemblyClientApp", "FurnitureAssemblyClientApp\FurnitureAssemblyClientApp.csproj", "{0913F238-EBAF-4D44-B381-3A35B35538B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureAssemblyClientApp1", "FurnitureAssemblyClientApp1\FurnitureAssemblyClientApp1.csproj", "{AD1A1F66-A274-40A8-B706-1DCDE9222BC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,10 +53,10 @@ Global
 		{4D2A4A72-1C88-4C8C-A303-1A808F7799BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D2A4A72-1C88-4C8C-A303-1A808F7799BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D2A4A72-1C88-4C8C-A303-1A808F7799BA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0913F238-EBAF-4D44-B381-3A35B35538B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0913F238-EBAF-4D44-B381-3A35B35538B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0913F238-EBAF-4D44-B381-3A35B35538B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0913F238-EBAF-4D44-B381-3A35B35538B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD1A1F66-A274-40A8-B706-1DCDE9222BC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD1A1F66-A274-40A8-B706-1DCDE9222BC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD1A1F66-A274-40A8-B706-1DCDE9222BC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD1A1F66-A274-40A8-B706-1DCDE9222BC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

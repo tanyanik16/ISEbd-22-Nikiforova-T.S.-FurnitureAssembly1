@@ -46,6 +46,7 @@ namespace FurnitureAssemblyFileImplement
             SaveComponents();
             SaveOrders();
             SaveFurnitures();
+            SaveClients();
         }
         private List<Component> LoadComponents()
         {
@@ -70,38 +71,20 @@ namespace FurnitureAssemblyFileImplement
             var list = new List<Order>();
             if (File.Exists(OrderFileName))
             {
-                XDocument xDocument = XDocument.Load(OrderFileName);
+                var xDocument = XDocument.Load(OrderFileName);
                 var xElements = xDocument.Root.Elements("Order").ToList();
-
                 foreach (var elem in xElements)
                 {
-                    OrderStatus status = 0;
-                    switch (elem.Element("Status").Value)
-                    {
-                        case "Принят":
-                            status = OrderStatus.Принят;
-                            break;
-                        case "Выполняется":
-                            status = OrderStatus.Выполняется;
-                            break;
-                        case "Готов":
-                            status = OrderStatus.Готов;
-                            break;
-                        case "Оплачен":
-                            status = OrderStatus.Выдан;
-                            break;
-                    }
-
                     list.Add(new Order
                     {
                         Id = Convert.ToInt32(elem.Attribute("Id").Value),
-                        ClientId = Convert.ToInt32(elem.Element("ClientId").Value),
                         FurnitureId = Convert.ToInt32(elem.Element("FurnitureId").Value),
                         Count = Convert.ToInt32(elem.Element("Count").Value),
+                        ClientId = Convert.ToInt32(elem.Element("ClientId").Value),
                         Sum = Convert.ToDecimal(elem.Element("Sum").Value),
-                        Status = status,
+                        Status = (OrderStatus)Enum.Parse(typeof(OrderStatus), elem.Element("Status").Value),
                         DateCreate = Convert.ToDateTime(elem.Element("DateCreate").Value),
-                        DateImplement = !string.IsNullOrEmpty(elem.Element("DateImplement").Value) ? Convert.ToDateTime(elem.Element("DateImplement").Value) : (DateTime?)null
+                        DateImplement = string.IsNullOrEmpty(elem.Element("DateImplement").Value) ? (DateTime?)null : Convert.ToDateTime(elem.Element("DateImplement").Value)
                     });
                 }
             }

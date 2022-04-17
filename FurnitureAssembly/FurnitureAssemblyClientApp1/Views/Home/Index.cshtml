@@ -1,5 +1,6 @@
 ﻿@using FurnitureAssemblyContracts.ViewModels
 @model List<OrderViewModel>
+
     @{
         ViewData["Title"] = "Home Page";
     }
@@ -49,11 +50,11 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem =>
-                 item.ComputerName)
+                        item.FurnitureName)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem =>
-                 item.DateCreate)
+                        item.DateCreate)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Count)

@@ -37,6 +37,8 @@ namespace FurnitureAssemblyView
             this.textBoxSum = new System.Windows.Forms.TextBox();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.labelClient = new System.Windows.Forms.Label();
+            this.comboBoxClient = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // labelName
@@ -92,7 +94,7 @@ namespace FurnitureAssemblyView
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(170, 136);
+            this.buttonSave.Location = new System.Drawing.Point(169, 196);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(94, 29);
             this.buttonSave.TabIndex = 6;
@@ -102,7 +104,7 @@ namespace FurnitureAssemblyView
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(290, 138);
+            this.buttonCancel.Location = new System.Drawing.Point(298, 196);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(94, 29);
             this.buttonCancel.TabIndex = 7;
@@ -110,11 +112,30 @@ namespace FurnitureAssemblyView
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
+            // labelClient
+            // 
+            this.labelClient.AutoSize = true;
+            this.labelClient.Location = new System.Drawing.Point(33, 147);
+            this.labelClient.Name = "labelClient";
+            this.labelClient.Size = new System.Drawing.Size(58, 20);
+            this.labelClient.TabIndex = 8;
+            this.labelClient.Text = "Клиент";
+            // 
+            // comboBoxClient
+            // 
+            this.comboBoxClient.FormattingEnabled = true;
+            this.comboBoxClient.Location = new System.Drawing.Point(97, 139);
+            this.comboBoxClient.Name = "comboBoxClient";
+            this.comboBoxClient.Size = new System.Drawing.Size(239, 28);
+            this.comboBoxClient.TabIndex = 9;
+            // 
             // FormCreateOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(468, 179);
+            this.ClientSize = new System.Drawing.Size(468, 237);
+            this.Controls.Add(this.comboBoxClient);
+            this.Controls.Add(this.labelClient);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.textBoxSum);
@@ -141,5 +162,7 @@ namespace FurnitureAssemblyView
         private System.Windows.Forms.TextBox textBoxSum;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Label labelClient;
+        private System.Windows.Forms.ComboBox comboBoxClient;
     }
 }

@@ -17,11 +17,13 @@ namespace FurnitureAssemblyView
     {
         private readonly IFurnitureLogic _logicP;
         private readonly IOrderLogic _logicO;
-        public FormCreateOrder(IFurnitureLogic logicP, IOrderLogic logicO)
+        private readonly IClientLogic _logicClient;
+        public FormCreateOrder(IFurnitureLogic logicP, IOrderLogic logicO, IClientLogic logicClient)
         {
             InitializeComponent();
             _logicP = logicP;
             _logicO = logicO;
+            _logicClient = logicClient;
         }
         private void FormCreateOrder_Load(object sender, EventArgs e)
         {
@@ -34,6 +36,14 @@ namespace FurnitureAssemblyView
                     comboBoxName.ValueMember = "Id";
                     comboBoxName.DataSource = list;
                     comboBoxName.SelectedItem = null;
+                }
+                var listClients = _logicClient.Read(null);
+                foreach (var client in listClients)
+                {
+                    comboBoxClient.DataSource = listClients;
+                    comboBoxClient.DisplayMember = "ClientFIO";
+                    comboBoxClient.ValueMember = "Id";
+                    comboBoxClient.SelectedItem = null;
                 }
             }
             catch (Exception ex)
@@ -79,6 +89,7 @@ namespace FurnitureAssemblyView
             {
                 _logicO.CreateOrder(new CreateOrderBindingModel
                 {
+                    ClientId = Convert.ToInt32(comboBoxClient.SelectedValue),
                     FurnitureId = Convert.ToInt32(comboBoxName.SelectedValue),
                     Count = Convert.ToInt32(textBoxCount.Text),
                     Sum = Convert.ToDecimal(textBoxSum.Text)

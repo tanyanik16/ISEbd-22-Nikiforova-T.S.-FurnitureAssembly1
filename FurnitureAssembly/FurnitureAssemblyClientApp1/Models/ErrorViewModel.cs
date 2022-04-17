@@ -1,6 +1,6 @@
 using System;
 
-namespace FurnitureAssemblyClientApp.Models
+namespace FurnitureAssemblyClientApp1.Models
 {
     public class ErrorViewModel
     {

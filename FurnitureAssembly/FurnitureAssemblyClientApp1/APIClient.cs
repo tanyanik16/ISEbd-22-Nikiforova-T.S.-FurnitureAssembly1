@@ -1,10 +1,12 @@
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-namespace AbstractShowClientApp
+
+
+namespace FurnitureAssemblyClientApp1
 {
     public static class APIClient
     {
@@ -42,3 +44,4 @@ namespace AbstractShowClientApp
         }
     }
 }
+
