@@ -68,6 +68,8 @@ namespace FurnitureAssemblyView
             currentContainer.RegisterType<FurnitureSaveToExcel, SaveToExcel>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<FurnitureSaveToPdf, SaveToPdf>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<FurnitureSaveToWord, SaveToWord>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IWorkProcess, WorkModeling>(new
+            HierarchicalLifetimeManager());
             return currentContainer;
         }
 

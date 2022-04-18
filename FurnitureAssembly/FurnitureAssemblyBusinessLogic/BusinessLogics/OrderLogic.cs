@@ -61,8 +61,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,
                 DateImplement = DateTime.Now,
-                Status = OrderStatus.Выполняется,
-                ClientId = order.ClientId
+                Status = OrderStatus.Выполняется
             });
         }
         public void FinishOrder(ChangeStatusBindingModel model)
