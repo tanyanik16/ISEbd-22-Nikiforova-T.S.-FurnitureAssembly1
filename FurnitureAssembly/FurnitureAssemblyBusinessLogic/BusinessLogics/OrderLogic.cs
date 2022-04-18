@@ -49,7 +49,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             {
                 throw new Exception("Не найден заказ");
             }
-            if (!order.Status.Equals("Принят"))
+            if (!(order.Status == OrderStatus.Принят))
             {
                 throw new Exception("Заказ не в статусе \"Принят\"");
             }
@@ -75,7 +75,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             {
                 throw new Exception("Не найден заказ");
             }
-            if (!order.Status.Equals("Выполняется"))
+            if (!(order.Status==OrderStatus.Выполняется))
             {
                 throw new Exception("Заказ не в статусе \"Выполняется\"");
             }

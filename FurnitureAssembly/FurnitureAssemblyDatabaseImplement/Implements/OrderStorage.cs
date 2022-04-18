@@ -37,31 +37,37 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
             {
                 return null;
             }
-            using var context = new FurnitureAssemblyDatabase();{
-            return context.Orders.Include(rec => rec.Furniture).Include(rec => rec.Client).Include(rec => rec.Implementer)
-                 .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.DateCreate.Date == model.DateCreate.Date) ||
-                 (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate.Date
-                 >= model.DateFrom.Value.Date && rec.DateCreate.Date <= model.DateTo.Value.Date) ||
-                 (model.ClientId.HasValue && rec.ClientId == model.ClientId) ||
+            using var context = new FurnitureAssemblyDatabase();
+            return context.Orders
+            .Include(rec => rec.Furniture)
+             .Include(rec => rec.Client)
+            .Include(rec => rec.Implementer)
+            .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue &&
+            rec.DateCreate.Date == model.DateCreate.Date) ||
+             (model.DateFrom.HasValue && model.DateTo.HasValue &&
+            rec.DateCreate.Date >= model.DateFrom.Value.Date && rec.DateCreate.Date <=
+            model.DateTo.Value.Date) ||
+             (model.ClientId.HasValue && rec.ClientId == model.ClientId) ||
+            (model.SearchStatus.HasValue && model.SearchStatus.Value ==
+            rec.Status) ||
             (model.ImplementerId.HasValue && rec.ImplementerId ==
-            model.ImplementerId && model.Status == rec.Status))
-                 .Select(rec => new OrderViewModel
-                 {
-                     Id = rec.Id,
-                     ClientId = rec.ClientId,
-                     ClientFIO = rec.Client.ClientFIO,
-                     ImplementerId = rec.ImplementerId,
-                     ImplementerFIO = rec.Implementer.ImplementerFIO,
-                     FurnitureId = rec.FurnitureId,
-                     FurnitureName = rec.Furniture.FurnitureName,
-                     Count = rec.Count,
-                     Sum = rec.Sum,
-                     Status = rec.Status,
-                     DateCreate = rec.DateCreate,
-                     DateImplement = rec.DateImplement,
-                 })
-                 .ToList();
-        }
+            model.ImplementerId && model.Status == rec.Status)).
+            Select(rec => new OrderViewModel
+            {
+                Id = rec.Id,
+                ClientId = rec.ClientId,
+                ClientFIO = rec.Client.ClientFIO,
+                ImplementerId = rec.ImplementerId,
+                ImplementerFIO = rec.Implementer.ImplementerFIO,
+                FurnitureId = rec.FurnitureId,
+                FurnitureName = rec.Furniture.FurnitureName,
+                Count = rec.Count,
+                Sum = rec.Sum,
+                Status = rec.Status,
+                DateCreate = rec.DateCreate,
+                DateImplement = rec.DateImplement,
+            })
+            .ToList();
         }
         public OrderViewModel GetElement(OrderBindingModel model)
         {
