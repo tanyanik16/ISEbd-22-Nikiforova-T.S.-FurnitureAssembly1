@@ -57,6 +57,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 FurnitureId = order.FurnitureId,
+                ImplementerId = model.ImplementerId,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,
@@ -83,6 +84,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 FurnitureId = order.FurnitureId,
+                ImplementerId = model.ImplementerId,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,

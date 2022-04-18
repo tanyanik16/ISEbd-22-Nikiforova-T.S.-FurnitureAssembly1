@@ -45,7 +45,7 @@ namespace FurnitureAssemblyView
                     foreach (var order in list)
                     {
                         dataGridView.Rows.Add(new object[] { order.Id, order.FurnitureId, order.FurnitureName,order.ClientFIO, order.Count, order.Sum,
-                            order.Status,order.DateCreate, order.DateImplement});
+                            order.Status,order.DateCreate, order.DateImplement, order.ImplementerFIO});
                     }
                 }
             }

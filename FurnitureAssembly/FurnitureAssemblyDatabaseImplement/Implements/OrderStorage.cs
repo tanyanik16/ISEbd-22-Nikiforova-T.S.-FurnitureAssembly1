@@ -28,6 +28,7 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
                     Status = rec.Status,
                     DateCreate = rec.DateCreate,
                     DateImplement = rec.DateImplement,
+                    ImplementerFIO = rec.Implementer.ImplementerFIO,
                 })
                 .ToList();
         }
@@ -161,7 +162,19 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
 
             using (FurnitureAssemblyDatabase context = new FurnitureAssemblyDatabase())
             {
-               Furniture element = context.Furnitures.FirstOrDefault(rec => rec.Id == model.FurnitureId);
+                
+                Implementer impl = context.Implementers.FirstOrDefault(rec => rec.Id == model.ImplementerId);
+                if (impl != null)
+                {
+                    if (impl.Orders == null)
+                    {
+                        impl.Orders = new List<Order>();
+                        context.Implementers.Update(impl);
+                        context.SaveChanges();
+                    }
+                    impl.Orders.Add(order);
+                }
+                Furniture element = context.Furnitures.FirstOrDefault(rec => rec.Id == model.FurnitureId);
                 if (element != null)
                 {
                     if (element.Orders == null)

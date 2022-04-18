@@ -54,6 +54,7 @@ namespace FurnitureAssemblyView
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDateCreate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDateEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Implementer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -196,8 +197,9 @@ namespace FurnitureAssemblyView
             this.ColumnSum,
             this.ColumnStatus,
             this.ColumnDateCreate,
-            this.ColumnDateEnd});
-            this.dataGridView.Location = new System.Drawing.Point(12, 44);
+            this.ColumnDateEnd,
+            this.Implementer});
+            this.dataGridView.Location = new System.Drawing.Point(9, 41);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 29;
@@ -269,6 +271,13 @@ namespace FurnitureAssemblyView
             this.ColumnDateEnd.Name = "ColumnDateEnd";
             this.ColumnDateEnd.Width = 125;
             // 
+            // Implementer
+            // 
+            this.Implementer.HeaderText = "Исполнитель ";
+            this.Implementer.MinimumWidth = 6;
+            this.Implementer.Name = "Implementer";
+            this.Implementer.Width = 125;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -318,6 +327,7 @@ namespace FurnitureAssemblyView
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateCreate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateEnd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Implementer;
     }
 }
 
