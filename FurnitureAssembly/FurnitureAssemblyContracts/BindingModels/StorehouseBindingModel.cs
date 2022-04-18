@@ -10,7 +10,7 @@ namespace FurnitureAssemblyContracts.BindingModels
     {
         public int? Id { get; set; }
         public string StorehouseName { get; set; }
-        public string ResponsiblePerson { get; set; }
+        public string ResponsiblePersonFCS { get; set; }
         public DateTime DateCreate { get; set; }
         public Dictionary<int, (string, int)> StorehouseComponents { get; set; }
     }

@@ -39,7 +39,7 @@ namespace FurnitureAssemblyView
                     if (view != null)
                     {
                         textBoxName.Text = view.StorehouseName;
-                        textBox_Person.Text = view.ResponsiblePerson;
+                        textBox_Person.Text = view.ResponsiblePersonFCS;
                         storehouseComponents = view.StorehouseComponents;
                         LoadData();
                     }
@@ -94,7 +94,7 @@ namespace FurnitureAssemblyView
                 {
                     Id = id,
                     StorehouseName = textBoxName.Text,
-                    ResponsiblePerson = textBox_Person.Text,
+                    ResponsiblePersonFCS = textBox_Person.Text,
                     StorehouseComponents = storehouseComponents,
                     DateCreate = DateTime.Now
                 });

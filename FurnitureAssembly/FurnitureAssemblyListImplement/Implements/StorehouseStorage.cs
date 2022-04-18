@@ -103,7 +103,7 @@ namespace FurnitureAssemblyListImplement.Implements
         private Storehouse CreateModel(StorehouseBindingModel model, Storehouse storehouse)
         {
             storehouse.StorehouseName = model.StorehouseName;
-            storehouse.ResponsiblePerson = model.ResponsiblePerson;
+            storehouse.ResponsiblePersonFCS = model.ResponsiblePersonFCS;
             storehouse.DateCreate = model.DateCreate;
             // удаляем убранные
             foreach (var key in storehouse.StorehouseComponents.Keys.ToList())
@@ -148,7 +148,7 @@ namespace FurnitureAssemblyListImplement.Implements
             {
                 Id = storehouse.Id,
                 StorehouseName = storehouse.StorehouseName,
-                ResponsiblePerson = storehouse.ResponsiblePerson,
+                ResponsiblePersonFCS = storehouse.ResponsiblePersonFCS,
                 DateCreate = storehouse.DateCreate,
                 StorehouseComponents = storehouseComponents
             };

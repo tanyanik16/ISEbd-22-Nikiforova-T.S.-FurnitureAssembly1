@@ -96,7 +96,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             {
                 Id = storehouse.Id,
                 StorehouseName = storehouse.StorehouseName,
-                ResponsiblePerson = storehouse.ResponsiblePerson,
+                ResponsiblePersonFCS = storehouse.ResponsiblePersonFCS,
                 DateCreate = storehouse.DateCreate,
                 StorehouseComponents = storehouse.StorehouseComponents
             });

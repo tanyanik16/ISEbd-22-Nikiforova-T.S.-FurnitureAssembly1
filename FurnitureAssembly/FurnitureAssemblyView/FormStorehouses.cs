@@ -25,7 +25,7 @@ namespace FurnitureAssemblyView
             _logic = logic;
         }
 
-        private void FormWarehouses_Load(object sender, EventArgs e)
+        private void FormStorehouses_Load(object sender, EventArgs e)
         {
             LoadData();
         }

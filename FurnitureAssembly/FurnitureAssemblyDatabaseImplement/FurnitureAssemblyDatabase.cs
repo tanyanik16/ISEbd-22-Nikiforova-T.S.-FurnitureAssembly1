@@ -10,7 +10,7 @@ namespace FurnitureAssemblyDatabaseImplement
         {
             if (optionsBuilder.IsConfigured == false)
             {
-                optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=FurnitureAssemblyDatabase;Trusted_Connection=True");
+                optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=FurnitureAssemblyDatabase2;Trusted_Connection=True");
             }
             base.OnConfiguring(optionsBuilder);
         }
@@ -18,6 +18,8 @@ namespace FurnitureAssemblyDatabaseImplement
         public virtual DbSet<Furniture> Furnitures{ set; get; }
         public virtual DbSet<FurnitureComponent> FurnitureComponents { set; get; }
         public virtual DbSet<Order> Orders { set; get; }
+        public virtual DbSet<Storehouse> Storehouses { set; get; }
+        public virtual DbSet<StorehouseComponent> StorehouseComponents { set; get; }
     }
 
 }

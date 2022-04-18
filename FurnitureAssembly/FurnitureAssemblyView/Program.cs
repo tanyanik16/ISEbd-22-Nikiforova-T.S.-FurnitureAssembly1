@@ -60,7 +60,7 @@ namespace FurnitureAssemblyView
             HierarchicalLifetimeManager());
             currentContainer.RegisterType<IStorehouseLogic, StorehouseLogic>(new
          HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IStorehouseStorage, StorehouseStorage>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IStorehouseStorage, StoreHouseStorage>(new HierarchicalLifetimeManager());
             return currentContainer;
         }
 

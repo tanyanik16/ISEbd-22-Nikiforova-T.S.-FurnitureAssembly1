@@ -99,7 +99,7 @@ namespace FurnitureAssemblyView
             this.Controls.Add(this.buttonAdd);
             this.Name = "FormStorehouses";
             this.Text = "Склады";
-            this.Load += new System.EventHandler(this.FormWarehouses_Load);
+            this.Load += new System.EventHandler(this.FormStorehouses_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 
