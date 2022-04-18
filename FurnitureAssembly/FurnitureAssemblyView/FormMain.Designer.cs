@@ -32,28 +32,29 @@ namespace FurnitureAssemblyView
             this.buttonCreateOrder = new System.Windows.Forms.Button();
             this.buttonRef = new System.Windows.Forms.Button();
             this.buttonIssuedOrder = new System.Windows.Forms.Button();
-            this.buttonOrderReady = new System.Windows.Forms.Button();
-            this.buttonTakeOrderInWork = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.справочникToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.компонентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.мебельToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.складыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.исполнителиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пополнениеСкладаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокКомпонентовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.компонентыПоИзделиямToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокЗаказовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.запускРаботToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnIdFurniture = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Client = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDateCreate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDateEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Implementer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -88,33 +89,14 @@ namespace FurnitureAssemblyView
             this.buttonIssuedOrder.UseVisualStyleBackColor = true;
             this.buttonIssuedOrder.Click += new System.EventHandler(this.buttonIssuedOrder_Click);
             // 
-            // buttonOrderReady
-            // 
-            this.buttonOrderReady.Location = new System.Drawing.Point(819, 193);
-            this.buttonOrderReady.Name = "buttonOrderReady";
-            this.buttonOrderReady.Size = new System.Drawing.Size(127, 29);
-            this.buttonOrderReady.TabIndex = 3;
-            this.buttonOrderReady.Text = "Заказ готов";
-            this.buttonOrderReady.UseVisualStyleBackColor = true;
-            this.buttonOrderReady.Click += new System.EventHandler(this.buttonOrderReady_Click);
-            // 
-            // buttonTakeOrderInWork
-            // 
-            this.buttonTakeOrderInWork.Location = new System.Drawing.Point(819, 122);
-            this.buttonTakeOrderInWork.Name = "buttonTakeOrderInWork";
-            this.buttonTakeOrderInWork.Size = new System.Drawing.Size(127, 50);
-            this.buttonTakeOrderInWork.TabIndex = 4;
-            this.buttonTakeOrderInWork.Text = "Отдать на выполнение ";
-            this.buttonTakeOrderInWork.UseVisualStyleBackColor = true;
-            this.buttonTakeOrderInWork.Click += new System.EventHandler(this.buttonTakeOrderInWork_Click);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.справочникToolStripMenuItem,
             this.пополнениеСкладаToolStripMenuItem,
-            this.отчетыToolStripMenuItem});
+            this.отчетыToolStripMenuItem,
+            this.запускРаботToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(955, 28);
@@ -126,7 +108,8 @@ namespace FurnitureAssemblyView
             this.справочникToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.компонентыToolStripMenuItem,
             this.мебельToolStripMenuItem,
-            this.складыToolStripMenuItem});
+            this.складыToolStripMenuItem,
+            this.исполнителиToolStripMenuItem});
             this.справочникToolStripMenuItem.Name = "справочникToolStripMenuItem";
             this.справочникToolStripMenuItem.Size = new System.Drawing.Size(117, 24);
             this.справочникToolStripMenuItem.Text = "Справочники";
@@ -134,23 +117,30 @@ namespace FurnitureAssemblyView
             // компонентыToolStripMenuItem
             // 
             this.компонентыToolStripMenuItem.Name = "компонентыToolStripMenuItem";
-            this.компонентыToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.компонентыToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
             this.компонентыToolStripMenuItem.Text = "Компоненты";
             this.компонентыToolStripMenuItem.Click += new System.EventHandler(this.компонентыToolStripMenuItem_Click);
             // 
             // мебельToolStripMenuItem
             // 
             this.мебельToolStripMenuItem.Name = "мебельToolStripMenuItem";
-            this.мебельToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.мебельToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
             this.мебельToolStripMenuItem.Text = "Мебель";
             this.мебельToolStripMenuItem.Click += new System.EventHandler(this.мебельToolStripMenuItem_Click);
             // 
             // складыToolStripMenuItem
             // 
             this.складыToolStripMenuItem.Name = "складыToolStripMenuItem";
-            this.складыToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.складыToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
             this.складыToolStripMenuItem.Text = "Клиент";
             this.складыToolStripMenuItem.Click += new System.EventHandler(this.складыToolStripMenuItem_Click);
+            // 
+            // исполнителиToolStripMenuItem
+            // 
+            this.исполнителиToolStripMenuItem.Name = "исполнителиToolStripMenuItem";
+            this.исполнителиToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
+            this.исполнителиToolStripMenuItem.Text = "Исполнители";
+            this.исполнителиToolStripMenuItem.Click += new System.EventHandler(this.исполнителиToolStripMenuItem_Click);
             // 
             // пополнениеСкладаToolStripMenuItem
             // 
@@ -188,6 +178,13 @@ namespace FurnitureAssemblyView
             this.списокЗаказовToolStripMenuItem.Text = "Список заказов";
             this.списокЗаказовToolStripMenuItem.Click += new System.EventHandler(this.списокЗаказовToolStripMenuItem_Click);
             // 
+            // запускРаботToolStripMenuItem
+            // 
+            this.запускРаботToolStripMenuItem.Name = "запускРаботToolStripMenuItem";
+            this.запускРаботToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
+            this.запускРаботToolStripMenuItem.Text = "Запуск работ";
+            this.запускРаботToolStripMenuItem.Click += new System.EventHandler(this.запускРаботToolStripMenuItem_Click);
+            // 
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -195,13 +192,14 @@ namespace FurnitureAssemblyView
             this.ColumnId,
             this.ColumnIdFurniture,
             this.ColumnName,
-            this.ColumnCount,
             this.Client,
+            this.ColumnCount,
             this.ColumnSum,
             this.ColumnStatus,
             this.ColumnDateCreate,
-            this.ColumnDateEnd});
-            this.dataGridView.Location = new System.Drawing.Point(12, 44);
+            this.ColumnDateEnd,
+            this.Implementer});
+            this.dataGridView.Location = new System.Drawing.Point(9, 41);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 29;
@@ -231,19 +229,19 @@ namespace FurnitureAssemblyView
             this.ColumnName.Name = "ColumnName";
             this.ColumnName.Width = 125;
             // 
-            // ColumnCount
-            // 
-            this.ColumnCount.HeaderText = "Количество";
-            this.ColumnCount.MinimumWidth = 6;
-            this.ColumnCount.Name = "ColumnCount";
-            this.ColumnCount.Width = 125;
-            // 
             // Client
             // 
             this.Client.HeaderText = "Клиент";
             this.Client.MinimumWidth = 6;
             this.Client.Name = "Client";
             this.Client.Width = 125;
+            // 
+            // ColumnCount
+            // 
+            this.ColumnCount.HeaderText = "Количество";
+            this.ColumnCount.MinimumWidth = 6;
+            this.ColumnCount.Name = "ColumnCount";
+            this.ColumnCount.Width = 125;
             // 
             // ColumnSum
             // 
@@ -273,14 +271,19 @@ namespace FurnitureAssemblyView
             this.ColumnDateEnd.Name = "ColumnDateEnd";
             this.ColumnDateEnd.Width = 125;
             // 
+            // Implementer
+            // 
+            this.Implementer.HeaderText = "Исполнитель ";
+            this.Implementer.MinimumWidth = 6;
+            this.Implementer.Name = "Implementer";
+            this.Implementer.Width = 125;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(955, 393);
             this.Controls.Add(this.dataGridView);
-            this.Controls.Add(this.buttonTakeOrderInWork);
-            this.Controls.Add(this.buttonOrderReady);
             this.Controls.Add(this.buttonIssuedOrder);
             this.Controls.Add(this.buttonRef);
             this.Controls.Add(this.buttonCreateOrder);
@@ -302,8 +305,6 @@ namespace FurnitureAssemblyView
         private System.Windows.Forms.Button buttonCreateOrder;
         private System.Windows.Forms.Button buttonRef;
         private System.Windows.Forms.Button buttonIssuedOrder;
-        private System.Windows.Forms.Button buttonOrderReady;
-        private System.Windows.Forms.Button buttonTakeOrderInWork;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem справочникToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem компонентыToolStripMenuItem;
@@ -315,15 +316,18 @@ namespace FurnitureAssemblyView
         private System.Windows.Forms.ToolStripMenuItem списокКомпонентовToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem компонентыПоИзделиямToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem списокЗаказовToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem исполнителиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem запускРаботToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIdFurniture;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn Client;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSum;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateCreate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateEnd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Implementer;
     }
 }
 

@@ -49,7 +49,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             {
                 throw new Exception("Не найден заказ");
             }
-            if (!order.Status.Equals("Принят"))
+            if (!(order.Status == OrderStatus.Принят))
             {
                 throw new Exception("Заказ не в статусе \"Принят\"");
             }
@@ -57,12 +57,12 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 FurnitureId = order.FurnitureId,
+                ImplementerId = model.ImplementerId,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,
                 DateImplement = DateTime.Now,
-                Status = OrderStatus.Выполняется,
-                ClientId = order.ClientId
+                Status = OrderStatus.Выполняется
             });
         }
         public void FinishOrder(ChangeStatusBindingModel model)
@@ -76,7 +76,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             {
                 throw new Exception("Не найден заказ");
             }
-            if (!order.Status.Equals("Выполняется"))
+            if (!(order.Status==OrderStatus.Выполняется))
             {
                 throw new Exception("Заказ не в статусе \"Выполняется\"");
             }
@@ -84,6 +84,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             {
                 Id = order.Id,
                 FurnitureId = order.FurnitureId,
+                ImplementerId = model.ImplementerId,
                 Count = order.Count,
                 Sum = order.Sum,
                 DateCreate = order.DateCreate,

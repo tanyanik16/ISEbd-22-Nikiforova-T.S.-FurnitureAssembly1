@@ -103,6 +103,28 @@ namespace FurnitureAssemblyDatabaseImplement.Migrations
                     b.ToTable("FurnitureComponents");
                 });
 
+            modelBuilder.Entity("FurnitureAssemblyDatabaseImplement.Models.Implementer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ImplementerFIO")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PauseTime")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WorkingTime")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Implementers");
+                });
+
             modelBuilder.Entity("FurnitureAssemblyDatabaseImplement.Models.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -125,6 +147,9 @@ namespace FurnitureAssemblyDatabaseImplement.Migrations
                     b.Property<int>("FurnitureId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ImplementerId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -136,6 +161,8 @@ namespace FurnitureAssemblyDatabaseImplement.Migrations
                     b.HasIndex("ClientId");
 
                     b.HasIndex("FurnitureId");
+
+                    b.HasIndex("ImplementerId");
 
                     b.ToTable("Orders");
                 });
@@ -173,9 +200,15 @@ namespace FurnitureAssemblyDatabaseImplement.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("FurnitureAssemblyDatabaseImplement.Models.Implementer", "Implementer")
+                        .WithMany("Orders")
+                        .HasForeignKey("ImplementerId");
+
                     b.Navigation("Client");
 
                     b.Navigation("Furniture");
+
+                    b.Navigation("Implementer");
                 });
 
             modelBuilder.Entity("FurnitureAssemblyDatabaseImplement.Models.Client", b =>
@@ -192,6 +225,11 @@ namespace FurnitureAssemblyDatabaseImplement.Migrations
                 {
                     b.Navigation("FurnitureComponents");
 
+                    b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("FurnitureAssemblyDatabaseImplement.Models.Implementer", b =>
+                {
                     b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618

@@ -28,6 +28,7 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
                     Status = rec.Status,
                     DateCreate = rec.DateCreate,
                     DateImplement = rec.DateImplement,
+                    ImplementerFIO = rec.Implementer.ImplementerFIO,
                 })
                 .ToList();
         }
@@ -37,27 +38,37 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
             {
                 return null;
             }
-            using var context = new FurnitureAssemblyDatabase();{
-            return context.Orders.Include(rec => rec.Furniture).Include(rec => rec.Client)
-                 .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue && rec.DateCreate.Date == model.DateCreate.Date) ||
-                 (model.DateFrom.HasValue && model.DateTo.HasValue && rec.DateCreate.Date
-                 >= model.DateFrom.Value.Date && rec.DateCreate.Date <= model.DateTo.Value.Date) ||
-                 (model.ClientId.HasValue && rec.ClientId == model.ClientId))
-                 .Select(rec => new OrderViewModel
-                 {
-                     Id = rec.Id,
-                     ClientId = rec.ClientId,
-                     ClientFIO = rec.Client.ClientFIO,
-                     FurnitureId = rec.FurnitureId,
-                     FurnitureName = rec.Furniture.FurnitureName,
-                     Count = rec.Count,
-                     Sum = rec.Sum,
-                     Status = rec.Status,
-                     DateCreate = rec.DateCreate,
-                     DateImplement = rec.DateImplement,
-                 })
-                 .ToList();
-        }
+            using var context = new FurnitureAssemblyDatabase();
+            return context.Orders
+            .Include(rec => rec.Furniture)
+             .Include(rec => rec.Client)
+            .Include(rec => rec.Implementer)
+            .Where(rec => (!model.DateFrom.HasValue && !model.DateTo.HasValue &&
+            rec.DateCreate.Date == model.DateCreate.Date) ||
+             (model.DateFrom.HasValue && model.DateTo.HasValue &&
+            rec.DateCreate.Date >= model.DateFrom.Value.Date && rec.DateCreate.Date <=
+            model.DateTo.Value.Date) ||
+             (model.ClientId.HasValue && rec.ClientId == model.ClientId) ||
+            (model.SearchStatus.HasValue && model.SearchStatus.Value ==
+            rec.Status) ||
+            (model.ImplementerId.HasValue && rec.ImplementerId ==
+            model.ImplementerId && model.Status == rec.Status)).
+            Select(rec => new OrderViewModel
+            {
+                Id = rec.Id,
+                ClientId = rec.ClientId,
+                ClientFIO = rec.Client.ClientFIO,
+                ImplementerId = rec.ImplementerId,
+                ImplementerFIO = rec.Implementer.ImplementerFIO,
+                FurnitureId = rec.FurnitureId,
+                FurnitureName = rec.Furniture.FurnitureName,
+                Count = rec.Count,
+                Sum = rec.Sum,
+                Status = rec.Status,
+                DateCreate = rec.DateCreate,
+                DateImplement = rec.DateImplement,
+            })
+            .ToList();
         }
         public OrderViewModel GetElement(OrderBindingModel model)
         {
@@ -68,11 +79,14 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
             using (FurnitureAssemblyDatabase context = new FurnitureAssemblyDatabase())
             {
                 Order order = context.Orders.Include(rec => rec.Furniture)
-                .FirstOrDefault(rec => rec.Id == model.Id);
+                 .Include(rec => rec.Implementer)
+                 .Include(rec => rec.Client)
+                 .FirstOrDefault(rec => rec.Id == model.Id);
                 return order != null ?
                 new OrderViewModel
                 {
                     Id = order.Id,
+                    ImplementerId = order.ImplementerId,
                     FurnitureId = order.FurnitureId,
                     FurnitureName = order.Furniture.FurnitureName,
                     Count = order.Count,
@@ -91,6 +105,7 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
                 Order order = new Order
                 {
                     FurnitureId = model.FurnitureId,
+                    ImplementerId = model.ImplementerId,
                     Count = model.Count,
                     ClientId = (int)model.ClientId,
                     Sum = model.Sum,
@@ -116,6 +131,7 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
                 element.FurnitureId = model.FurnitureId;
                 element.Count = model.Count;
                 element.Sum = model.Sum;
+                element.ImplementerId = model.ImplementerId;
                 element.Status = model.Status;
                 element.DateCreate = model.DateCreate;
                 element.DateImplement = model.DateImplement;
@@ -146,7 +162,19 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
 
             using (FurnitureAssemblyDatabase context = new FurnitureAssemblyDatabase())
             {
-               Furniture element = context.Furnitures.FirstOrDefault(rec => rec.Id == model.FurnitureId);
+                
+                Implementer impl = context.Implementers.FirstOrDefault(rec => rec.Id == model.ImplementerId);
+                if (impl != null)
+                {
+                    if (impl.Orders == null)
+                    {
+                        impl.Orders = new List<Order>();
+                        context.Implementers.Update(impl);
+                        context.SaveChanges();
+                    }
+                    impl.Orders.Add(order);
+                }
+                Furniture element = context.Furnitures.FirstOrDefault(rec => rec.Id == model.FurnitureId);
                 if (element != null)
                 {
                     if (element.Orders == null)
