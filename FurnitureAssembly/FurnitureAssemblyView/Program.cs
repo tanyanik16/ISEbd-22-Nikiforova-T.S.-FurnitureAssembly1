@@ -1,6 +1,8 @@
 using System;
 using FurnitureAssemblyBusinessLogic.BusinessLogics;
 using FurnitureAssemblyBusinessLogic.OfficePackage;
+using FurnitureAssemblyContracts.BindingModels;
+using FurnitureAssemblyBusinessLogic.MailWorker;
 using FurnitureAssemblyBusinessLogic.OfficePackage.Implements;
 using FurnitureAssemblyContracts.BusinessLogicsContracts;
 using FurnitureAssemblyContracts.StoragesContracts;
@@ -9,6 +11,9 @@ using FurnitureAssemblyFileImplement;
 using System.Windows.Forms;
 using Unity;
 using Unity.Lifetime;
+using System.Configuration;
+using System.Threading;
+
 
 namespace FurnitureAssemblyView
 {
@@ -32,6 +37,24 @@ namespace FurnitureAssemblyView
         [STAThread]
         static void Main()
         {
+
+            var mailSender = Container.Resolve<AbstractMailWorker>();
+            mailSender.MailConfig(new MailConfigBindingModel
+            {
+                MailLogin = ConfigurationManager.AppSettings["MailLogin"],
+                MailPassword =
+            ConfigurationManager.AppSettings["MailPassword"],
+                SmtpClientHost =
+            ConfigurationManager.AppSettings["SmtpClientHost"],
+                SmtpClientPort =
+            Convert.ToInt32(ConfigurationManager.AppSettings["SmtpClientPort"]),
+                PopHost = ConfigurationManager.AppSettings["PopHost"],
+                PopPort =
+            Convert.ToInt32(ConfigurationManager.AppSettings["PopPort"])
+            });
+            var timer = new System.Threading.Timer(new TimerCallback(MailCheck), null, 0,100000);
+
+
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -70,8 +93,10 @@ namespace FurnitureAssemblyView
             currentContainer.RegisterType<FurnitureSaveToWord, SaveToWord>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IWorkProcess, WorkModeling>(new
             HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IWorkProcess, WorkModeling>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<AbstractMailWorker, MailKitWorker>(new SingletonLifetimeManager());
             return currentContainer;
         }
-
+        private static void MailCheck(object obj) =>Container.Resolve<AbstractMailWorker>().MailCheck();
     }
 }
