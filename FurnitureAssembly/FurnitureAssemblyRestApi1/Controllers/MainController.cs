@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ComputerShopRestApi.Controllers
+namespace FurnitureAssemblyShopRestApi.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]

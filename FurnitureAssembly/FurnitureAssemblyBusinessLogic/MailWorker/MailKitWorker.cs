@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FurnitureAssemblyContracts.BindingModels;
 using FurnitureAssemblyContracts.BusinessLogicsContracts;
+using FurnitureAssemblyContracts.StoragesContracts;
 using MailKit.Net.Pop3;
 using MailKit.Security;
 using System.Net;
@@ -15,9 +16,11 @@ namespace FurnitureAssemblyBusinessLogic.MailWorker
 {
     public class MailKitWorker : AbstractMailWorker
     {
-        public MailKitWorker(IMessageInfoLogic messageInfoLogic) :
+        public IClientStorage clientStorage;
+        public MailKitWorker(IMessageInfoLogic messageInfoLogic, IClientStorage client) :
         base(messageInfoLogic)
         {
+            clientStorage = client;
         }
         protected override async Task SendMailAsync(MailSendInfoBindingModel info)
         {
@@ -64,6 +67,7 @@ namespace FurnitureAssemblyBusinessLogic.MailWorker
                             {
                                 DateDelivery =
                             message.Date.DateTime,
+                                ClientId = clientStorage.GetElement(new ClientBindingModel { Email = mail.Address })?.Id,
                                 MessageId = message.MessageId,
                                 FromMailAddress = mail.Address,
                                 Subject = message.Subject,

@@ -34,13 +34,13 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
             var element = _clientStorage.GetElement(new ClientBindingModel
             {
                 ClientFIO =
-           model.ClientFIO
+          model.ClientFIO
             });
             if (element != null && element.Id != model.Id)
             {
                 throw new Exception("Уже есть клиент с таким ФИО");
             }
-            if (!Regex.IsMatch(model.Email, @"регулярное выражение"))
+            if (!Regex.IsMatch(model.Email, @"^[A-Za-z0-9]+(?:[._%+-])?[A-Za-z0-9._-]+[A-Za-z0-9]@[A-Za-z0-9]+(?:[.-])?[A-Za-z0-9._-]+\.[A-Za-z]{2,6}$"))
             {
                 throw new Exception("В качестве логина почта указана должна быть");
             }

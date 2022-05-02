@@ -44,6 +44,8 @@ namespace FurnitureAssemblyView
             this.компонентыПоИзделиямToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокЗаказовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.запускРаботToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.письимаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.письмаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnIdFurniture = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,7 +98,8 @@ namespace FurnitureAssemblyView
             this.справочникToolStripMenuItem,
             this.пополнениеСкладаToolStripMenuItem,
             this.отчетыToolStripMenuItem,
-            this.запускРаботToolStripMenuItem});
+            this.запускРаботToolStripMenuItem,
+            this.письимаToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(955, 28);
@@ -184,6 +187,21 @@ namespace FurnitureAssemblyView
             this.запускРаботToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
             this.запускРаботToolStripMenuItem.Text = "Запуск работ";
             this.запускРаботToolStripMenuItem.Click += new System.EventHandler(this.запускРаботToolStripMenuItem_Click);
+            // 
+            // письимаToolStripMenuItem
+            // 
+            this.письимаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.письмаToolStripMenuItem});
+            this.письимаToolStripMenuItem.Name = "письимаToolStripMenuItem";
+            this.письимаToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
+            this.письимаToolStripMenuItem.Text = "Письма";
+            this.письимаToolStripMenuItem.Click += new System.EventHandler(this.письимаToolStripMenuItem_Click);
+            // 
+            // письмаToolStripMenuItem
+            // 
+            this.письмаToolStripMenuItem.Name = "письмаToolStripMenuItem";
+            this.письмаToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.письмаToolStripMenuItem.Text = "Письма";
             // 
             // dataGridView
             // 
@@ -328,6 +346,8 @@ namespace FurnitureAssemblyView
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateCreate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateEnd;
         private System.Windows.Forms.DataGridViewTextBoxColumn Implementer;
+        private System.Windows.Forms.ToolStripMenuItem письимаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem письмаToolStripMenuItem;
     }
 }
 

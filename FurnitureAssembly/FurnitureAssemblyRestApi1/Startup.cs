@@ -67,14 +67,16 @@ namespace FurnitureAssemblyRestApi1
             mailSender.MailConfig(new MailConfigBindingModel
             {
                 MailLogin =
-            Configuration?.GetSection("MailLogin")?.ToString(),
+             Configuration?.GetSection("MailLogin").Value,
                 MailPassword =
-            Configuration?.GetSection("MailPassword")?.ToString(),
+             Configuration?.GetSection("MailPassword").Value,
                 SmtpClientHost =
-            Configuration?.GetSection("SmtpClientHost")?.ToString(),
-                SmtpClientPort = Convert.ToInt32(Configuration?.GetSection("SmtpClientPort")?.ToString()),
-                PopHost = Configuration?.GetSection("PopHost")?.ToString(),
-                PopPort = Convert.ToInt32(Configuration?.GetSection("PopPort")?.ToString())
+             Configuration?.GetSection("SmtpClientHost").Value,
+                SmtpClientPort =
+             Convert.ToInt32(Configuration?.GetSection("SmtpClientPort").Value),
+                PopHost = Configuration?.GetSection("PopHost").Value,
+                PopPort =
+             Convert.ToInt32(Configuration?.GetSection("PopPort").Value)
             });
         }
     }
