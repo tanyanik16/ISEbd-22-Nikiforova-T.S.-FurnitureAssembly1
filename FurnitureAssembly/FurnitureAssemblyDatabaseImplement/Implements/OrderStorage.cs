@@ -87,6 +87,7 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
                 {
                     Id = order.Id,
                     ImplementerId = order.ImplementerId,
+                    ClientId = order.ClientId,
                     FurnitureId = order.FurnitureId,
                     FurnitureName = order.Furniture.FurnitureName,
                     Count = order.Count,

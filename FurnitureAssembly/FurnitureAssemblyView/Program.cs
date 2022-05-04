@@ -58,15 +58,10 @@ namespace FurnitureAssemblyView
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.ApplicationExit += ApplicationExit;
-            AppDomain.CurrentDomain.UnhandledException += (o, e) => { if (e.IsTerminating) ApplicationExit(null, null); };
-            Application.ThreadException += (o, e) => { Application.Exit(); };
+           
             Application.Run(Container.Resolve<FormMain>());
         }
-        private static void ApplicationExit(object sender, EventArgs e)
-        {
-           FileDataListSingleton.SaveAll();
-        }
+       
 
         private static IUnityContainer BuildUnityContainer()
         {
@@ -93,7 +88,8 @@ namespace FurnitureAssemblyView
             currentContainer.RegisterType<FurnitureSaveToWord, SaveToWord>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IWorkProcess, WorkModeling>(new
             HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IWorkProcess, WorkModeling>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IMessageInfoStorage, MessageInfoStorage>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IMessageInfoLogic, MessageInfoLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<AbstractMailWorker, MailKitWorker>(new SingletonLifetimeManager());
             return currentContainer;
         }
