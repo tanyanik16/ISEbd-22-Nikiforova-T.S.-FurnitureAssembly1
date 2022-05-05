@@ -97,6 +97,14 @@ namespace FurnitureAssemblyClientApp1.Controllers
         {
             return View();
         }
+        public IActionResult Mail()
+        {
+            if (Program.Client == null)
+            {
+                return Redirect("~/Home/Enter");
+            }
+            return View(APIClient.GetRequest<List<MessageInfoViewModel>>($"api/client/getmessages?clientId={Program.Client.Id}"));
+        }
         [HttpPost]
         public void Register(string login, string password, string fio)
         {
@@ -118,9 +126,9 @@ namespace FurnitureAssemblyClientApp1.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            //ViewBag.Products = new SelectList(APIClient.GetRequest<List<ComputerViewModel>>("api/main/getproductlist"), "Id", "Name");
+            //ViewBag.Products = new SelectList(APIClient.GetRequest<List<FurnitureViewModel >>("api/main/getproductlist"), "Id", "Name");
             ViewBag.Products =
-            APIClient.GetRequest<List<FurnitureViewModel>>("api/main/getproductlist");
+            APIClient.GetRequest<List<FurnitureViewModel >>("api/main/getproductlist");
             return View();
         }
         [HttpPost]

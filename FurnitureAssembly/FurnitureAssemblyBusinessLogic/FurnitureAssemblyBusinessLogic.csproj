@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="DocumentFormat.OpenXml" Version="2.15.0" />
+    <PackageReference Include="MailKit" Version="3.2.0" />
     <PackageReference Include="MigraDoc.Rendering.Core" Version="1.0.0" />
   </ItemGroup>
 

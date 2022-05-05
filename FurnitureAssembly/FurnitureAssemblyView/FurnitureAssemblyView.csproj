@@ -19,8 +19,9 @@
 	  <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.16" />
 	  <PackageReference Include="Unity" Version="5.11.10" />
   </ItemGroup>
+	
 
-  <ItemGroup>
+	<ItemGroup>
     <ProjectReference Include="..\FurnitureAssemblyBusinessLogic\FurnitureAssemblyBusinessLogic.csproj" />
     <ProjectReference Include="..\FurnitureAssemblyDatabaseImplement\FurnitureAssemblyDatabaseImplement.csproj" />
     <ProjectReference Include="..\FurnitureAssemblyFileImplement\FurnitureAssemblyFileImplement.csproj" />
