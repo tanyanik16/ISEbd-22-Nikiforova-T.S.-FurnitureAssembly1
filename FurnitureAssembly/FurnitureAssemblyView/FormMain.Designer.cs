@@ -57,6 +57,7 @@ namespace FurnitureAssemblyView
             this.ColumnDateCreate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDateEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Implementer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.создатьБекапToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -99,7 +100,8 @@ namespace FurnitureAssemblyView
             this.пополнениеСкладаToolStripMenuItem,
             this.отчетыToolStripMenuItem,
             this.запускРаботToolStripMenuItem,
-            this.письимаToolStripMenuItem});
+            this.письимаToolStripMenuItem,
+            this.создатьБекапToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(955, 28);
@@ -200,7 +202,7 @@ namespace FurnitureAssemblyView
             // письмаToolStripMenuItem
             // 
             this.письмаToolStripMenuItem.Name = "письмаToolStripMenuItem";
-            this.письмаToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.письмаToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
             this.письмаToolStripMenuItem.Text = "Письма";
             // 
             // dataGridView
@@ -296,6 +298,13 @@ namespace FurnitureAssemblyView
             this.Implementer.Name = "Implementer";
             this.Implementer.Width = 125;
             // 
+            // создатьБекапToolStripMenuItem
+            // 
+            this.создатьБекапToolStripMenuItem.Name = "создатьБекапToolStripMenuItem";
+            this.создатьБекапToolStripMenuItem.Size = new System.Drawing.Size(123, 24);
+            this.создатьБекапToolStripMenuItem.Text = "Создать бекап";
+            this.создатьБекапToolStripMenuItem.Click += new System.EventHandler(this.создатьБекапToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -348,6 +357,7 @@ namespace FurnitureAssemblyView
         private System.Windows.Forms.DataGridViewTextBoxColumn Implementer;
         private System.Windows.Forms.ToolStripMenuItem письимаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem письмаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem создатьБекапToolStripMenuItem;
     }
 }
 
