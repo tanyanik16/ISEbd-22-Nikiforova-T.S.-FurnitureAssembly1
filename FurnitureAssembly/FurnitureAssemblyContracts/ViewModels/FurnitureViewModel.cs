@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel;
 using System.Runtime.Serialization;
+using FurnitureAssemblyContracts.Attributes;
 
 namespace FurnitureAssemblyContracts.ViewModels
 {
@@ -12,15 +13,14 @@ namespace FurnitureAssemblyContracts.ViewModels
     [DataContract]
     public class FurnitureViewModel
     {
-        [DataMember]
+        [Column(title: "Номер", width: 50)]
         public int Id { get; set; }
-        [DataMember]
-        [DisplayName("Название мебели")]
+        [DisplayName("Мебель")]
+        [Column(title: "Название мебели", gridViewAutoSize: GridViewAutoSize.Fill)]
         public string FurnitureName { get; set; }
-        [DataMember]
         [DisplayName("Цена")]
+        [Column(title: "Цена", width: 100)]
         public decimal Price { get; set; }
-        [DataMember]
         public Dictionary<int, (string, int)> FurnitureComponents { get; set; }
     }
 }

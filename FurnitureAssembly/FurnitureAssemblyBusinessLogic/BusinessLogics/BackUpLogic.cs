@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using FurnitureAssemblyContracts.BindingModels;
 using FurnitureAssemblyContracts.BusinessLogicsContracts;
 using FurnitureAssemblyContracts.StoragesContracts;
-
+using System.Xml.Serialization;
 using System.IO;
 using System.IO.Compression;
 using System.Reflection;
@@ -47,8 +47,9 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
                 Assembly assem = _backUpInfo.GetAssembly();
                 // вытаскиваем список классов для сохранения
                 var dbsets = _backUpInfo.GetFullList();
-                // берем метод для сохранения (из базвого абстрактного класса)
-                MethodInfo method =GetType().BaseType.GetTypeInfo().GetDeclaredMethod("SaveToFile");
+                // берем метод для сохранения (из текущего класса)
+                MethodInfo method =
+               GetType().GetTypeInfo().GetDeclaredMethod("SaveToFile");
                 foreach (var set in dbsets)
                 {
                     // создаем объект из класса для сохранения
@@ -73,11 +74,13 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
         private void SaveToFile<T>(string folderName) where T : class, new()
         {
             var records = _backUpInfo.GetList<T>();
-            var obj = new T();
-            var jsonFormatter = new DataContractJsonSerializer(typeof(List<T>));
-            using var fs = new FileStream(string.Format("{0}/{1}.json",
-            folderName, obj.GetType().Name), FileMode.OpenOrCreate);
-            jsonFormatter.WriteObject(fs, records);
+            T obj = new T();
+            XmlSerializer xmlFormatter = new
+            XmlSerializer(typeof(List<T>));
+            using (FileStream fs = new FileStream(string.Format("{0}/{1}.xml", folderName, obj.GetType().Name), FileMode.OpenOrCreate))
+            {
+                xmlFormatter.Serialize(fs, records);
+            }
         }
     }
 }
