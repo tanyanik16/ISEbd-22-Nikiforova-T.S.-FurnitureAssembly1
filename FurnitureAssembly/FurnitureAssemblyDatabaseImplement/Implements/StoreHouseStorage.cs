@@ -151,6 +151,10 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
                 {
                     try
                     {
+                        var stock = context.Storehouses.FirstOrDefault(x => x.StorehouseName == model.StorehouseName);
+                        {
+                            throw new Exception("склад есть с таким именем ");
+                        }
                         CreateModel(model, new Storehouse(), context);
                         context.SaveChanges();
                         transaction.Commit();
@@ -161,6 +165,7 @@ namespace FurnitureAssemblyDatabaseImplement.Implements
                         throw;
                     }
                 }
+
             }
         }
 
