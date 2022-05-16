@@ -45,7 +45,7 @@ namespace FurnitureAssemblyBusinessLogic.BusinessLogics
                 }
                 // берем сборку, чтобы от нее создавать объекты
                 Assembly assem = _backUpInfo.GetAssembly();
-                // вытаскиваем список классов для сохранения
+             
                 var dbsets = _backUpInfo.GetFullList();
                 // берем метод для сохранения (из текущего класса)
                 MethodInfo method =
