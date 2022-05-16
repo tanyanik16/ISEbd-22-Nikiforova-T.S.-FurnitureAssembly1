@@ -12,7 +12,7 @@ namespace FurnitureAssemblyListImplement.Models
 
         public string StorehouseName { get; set; }
 
-        public string ResponsiblePerson { get; set; }
+        public string ResponsiblePersonFCS { get; set; }
 
         public DateTime DateCreate { get; set; }
 

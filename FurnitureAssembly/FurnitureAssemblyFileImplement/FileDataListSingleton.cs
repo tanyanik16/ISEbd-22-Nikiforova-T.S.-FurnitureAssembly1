@@ -68,7 +68,7 @@ namespace FurnitureAssemblyFileImplement
                     {
                         Id = Convert.ToInt32(elem.Attribute("Id").Value),
                         StorehouseName = elem.Element("StorehouseName").Value,
-                        ResponsiblePerson = elem.Element("ResponsiblePerson").Value,
+                        ResponsiblePersonFCS = elem.Element("ResponsiblePersonFCS").Value,
                         DateCreate = Convert.ToDateTime(elem.Element("DateCreate").Value),
                         StorehouseComponents = WHComp
                     });
@@ -179,7 +179,7 @@ namespace FurnitureAssemblyFileImplement
                     xElement.Add(new XElement("Storehouse",
                      new XAttribute("Id", storehouse.Id),
                      new XElement("StorehouseName", storehouse.StorehouseName),
-                     new XElement("ResponsiblePerson", storehouse.ResponsiblePerson),
+                     new XElement("ResponsiblePersonFCS", storehouse.ResponsiblePersonFCS),
                      new XElement("DateCreate", storehouse.DateCreate),
                      storehouseElement));
                 }

@@ -12,7 +12,7 @@ namespace FurnitureAssemblyContracts.ViewModels
         [DisplayName("Название склада")]
         public string StorehouseName { get; set; }
         [DisplayName("ФИО ответственного")]
-        public string ResponsiblePerson { get; set; }
+        public string ResponsiblePersonFCS { get; set; }
         [DisplayName("Дата создания склада")]
         public DateTime DateCreate { get; set; }
 

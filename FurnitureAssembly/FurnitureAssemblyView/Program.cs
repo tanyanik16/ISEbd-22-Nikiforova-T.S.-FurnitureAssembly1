@@ -2,7 +2,7 @@ using System;
 using FurnitureAssemblyBusinessLogic.BusinessLogics;
 using FurnitureAssemblyContracts.BusinessLogicsContracts;
 using FurnitureAssemblyContracts.StoragesContracts;
-using FurnitureAssemblyFileImplement.Implements;
+using FurnitureAssemblyDatabaseImplement.Implements;
 using FurnitureAssemblyFileImplement;
 using System.Windows.Forms;
 using Unity;
@@ -40,7 +40,7 @@ namespace FurnitureAssemblyView
         }
         private static void ApplicationExit(object sender, EventArgs e)
         {
-            FileDataListSingleton.SaveAll();
+           FileDataListSingleton.SaveAll();
         }
 
         private static IUnityContainer BuildUnityContainer()
@@ -60,7 +60,7 @@ namespace FurnitureAssemblyView
             HierarchicalLifetimeManager());
             currentContainer.RegisterType<IStorehouseLogic, StorehouseLogic>(new
          HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IStorehouseStorage, StorehouseStorage>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IStorehouseStorage, StoreHouseStorage>(new HierarchicalLifetimeManager());
             return currentContainer;
         }
 
