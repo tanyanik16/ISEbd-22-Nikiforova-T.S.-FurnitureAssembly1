@@ -1,6 +1,7 @@
 ﻿using FurnitureAssemblyBusinessLogic.BusinessLogics;
 using FurnitureAssemblyContracts.BindingModels;
 using System;
+using FurnitureAssemblyView;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace FurnitureAssemblyView
 {
     public partial class FormClient : Form
     {
+        public new IUnityContainer Container { get; set; }
         private readonly ClientLogic logic;
         public FormClient(ClientLogic logic)
         {
@@ -26,13 +28,7 @@ namespace FurnitureAssemblyView
         {
             try
             {
-                var list = logic.Read(null);
-                if (list != null)
-                {
-                    dataGridView1.DataSource = list;
-                    dataGridView1.Columns[0].Visible = false;
-                    dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
+                Program.ConfigGrid(logic.Read(null), dataGridView1);
             }
             catch (Exception ex)
             {
@@ -62,6 +58,7 @@ namespace FurnitureAssemblyView
                     LoadData();
                 }
             }
+
         }
 
         private void buttonUpdate_Click(object sender, EventArgs e)
@@ -75,3 +72,6 @@ namespace FurnitureAssemblyView
         }
     }
 }
+
+    
+

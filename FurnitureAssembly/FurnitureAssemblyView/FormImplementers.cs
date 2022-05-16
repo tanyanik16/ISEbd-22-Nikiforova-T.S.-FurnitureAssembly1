@@ -26,14 +26,7 @@ namespace FurnitureAssemblyView
         {
             try
             {
-                var list = logic.Read(null);
-                if (list != null)
-                {
-                    dataGridView1.DataSource = list;
-                    dataGridView1.Columns[0].Visible = false;
-                    dataGridView1.Columns[3].AutoSizeMode =
-                    DataGridViewAutoSizeColumnMode.Fill;
-                }
+                Program.ConfigGrid(logic.Read(null), dataGridView1);
             }
             catch (Exception ex)
             {

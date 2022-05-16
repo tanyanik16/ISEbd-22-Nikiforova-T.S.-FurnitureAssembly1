@@ -60,14 +60,7 @@ namespace FurnitureAssemblyView
         {
             try
             {
-                if (furnitureComponents != null)
-                {
-                    dataGridView.Rows.Clear();
-                    foreach (var pc in furnitureComponents)
-                    {
-                        dataGridView.Rows.Add(new object[] { pc.Key, pc.Value.Item1,pc.Value.Item2 });
-                    }
-                }
+                Program.ConfigGrid(_logic.Read(null), dataGridView);
             }
             catch (Exception ex)
             {
@@ -183,5 +176,7 @@ namespace FurnitureAssemblyView
             DialogResult = DialogResult.Cancel;
             Close();
         }
+
+        
     }
 }
