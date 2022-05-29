@@ -7,10 +7,10 @@ using FurnitureAssemblyBusinessLogic.OfficePackage.HelperEnums;
 using FurnitureAssemblyBusinessLogic.OfficePackage.HelperModels;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
-using MigraDoc.Rendering; 
+using MigraDoc.Rendering;
 namespace FurnitureAssemblyBusinessLogic.OfficePackage.Implements
 {
-    public class SaveToPdf: FurnitureSaveToPdf
+    public class SaveToPdf : FurnitureSaveToPdf
     {
         private Document _document;
         private Section _section;

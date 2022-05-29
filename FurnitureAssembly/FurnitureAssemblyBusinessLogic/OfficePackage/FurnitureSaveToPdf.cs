@@ -20,13 +20,14 @@ namespace FurnitureAssemblyBusinessLogic.OfficePackage
             });
             CreateParagraph(new PdfParagraph
             {
-                Text = $"с { info.DateFrom.ToShortDateString() } по { info.DateTo.ToShortDateString() }", Style ="Normal"
+                Text = $"с{ info.DateFrom.ToShortDateString() } по { info.DateTo.ToShortDateString() }",
+                Style = "Normal"
             });
             CreateTable(new List<string> { "3cm", "6cm", "3cm", "2cm", "3cm" });
             CreateRow(new PdfRowParameters
             {
                 Texts = new List<string> { "Дата заказа", "Изделие", "Количество",
-"Сумма", "Статус" },
+                                            "Сумма", "Статус" },
                 Style = "NormalTitle",
                 ParagraphAlignment = PdfParagraphAlignmentType.Center
             });
@@ -35,41 +36,52 @@ namespace FurnitureAssemblyBusinessLogic.OfficePackage
                 CreateRow(new PdfRowParameters
                 {
                     Texts = new List<string> { order.DateCreate.ToShortDateString(),
-order.FurnitureName, order.Count.ToString(), order.Sum.ToString(), order.Status.ToString()
-},
+                order.FurnitureName, order.Count.ToString(), order.Sum.ToString(), order.Status.ToString()
+                },
                     Style = "Normal",
                     ParagraphAlignment = PdfParagraphAlignmentType.Left
                 });
             }
             SavePdf(info);
         }
-        /// <summary>
-        /// Создание doc-файла
-        /// </summary>
-        /// <param name="info"></param>
+        public void CreateDocOrdersForAllDates(PdfInfoOrdersForAllDates info)
+        {
+            CreatePdf(new PdfInfo()
+            {
+                FileName = info.FileName
+            });
+            CreateParagraph(new PdfParagraph
+            {
+                Text = info.Title,
+                Style = "NormalTitle"
+            });
+            CreateTable(new List<string> { "6cm", "6cm", "5cm" });
+            CreateRow(new PdfRowParameters
+            {
+                Texts = new List<string> { "Дата", "Количество заказов", "Сумма" },
+                Style = "NormalTitle",
+                ParagraphAlignment = PdfParagraphAlignmentType.Center
+            });
+            foreach (var order in info.Orders)
+            {
+                CreateRow(new PdfRowParameters
+                {
+                    Texts = new List<string> { order.Date.ToShortDateString(),
+                        order.Count.ToString(), order.Sum.ToString()},
+                    Style = "Normal",
+                    ParagraphAlignment = PdfParagraphAlignmentType.Left
+                });
+            }
+            SavePdf(new PdfInfo()
+            {
+                FileName = info.FileName
+            });
+        }
         protected abstract void CreatePdf(PdfInfo info);
-        /// <summary>
-        /// Создание параграфа с текстом
-        /// </summary>
-        /// <param name="title"></param>
-        /// <param name="style"></param>
         protected abstract void CreateParagraph(PdfParagraph paragraph);
-        /// <summary>
-        /// Создание таблицы
-        /// </summary>
-        /// <param name="title"></param>
-        /// <param name="style"></param>
         protected abstract void CreateTable(List<string> columns);
-        /// <summary>
-        /// Создание и заполнение строки
-        /// </summary>
-        /// <param name="rowParameters"></param>
         protected abstract void CreateRow(PdfRowParameters rowParameters);
-        /// <summary>
-        /// Сохранение файла
-        /// </summary>
-        /// <param name="info"></param>
         protected abstract void SavePdf(PdfInfo info);
-
     }
 }
+
