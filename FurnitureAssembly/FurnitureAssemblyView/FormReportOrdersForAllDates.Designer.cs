@@ -30,8 +30,8 @@ namespace FurnitureAssemblyView
         private void InitializeComponent()
         {
             this.Reportpanel = new System.Windows.Forms.Panel();
-            this.buttonSform = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonSform = new System.Windows.Forms.Button();
             this.Reportpanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -39,30 +39,31 @@ namespace FurnitureAssemblyView
             // 
             this.Reportpanel.Controls.Add(this.buttonSave);
             this.Reportpanel.Controls.Add(this.buttonSform);
-            this.Reportpanel.Location = new System.Drawing.Point(12, 12);
+            this.Reportpanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Reportpanel.Location = new System.Drawing.Point(0, 0);
             this.Reportpanel.Name = "Reportpanel";
-            this.Reportpanel.Size = new System.Drawing.Size(772, 70);
+            this.Reportpanel.Size = new System.Drawing.Size(800, 94);
             this.Reportpanel.TabIndex = 0;
-            // 
-            // buttonSform
-            // 
-            this.buttonSform.Location = new System.Drawing.Point(16, 3);
-            this.buttonSform.Name = "buttonSform";
-            this.buttonSform.Size = new System.Drawing.Size(145, 54);
-            this.buttonSform.TabIndex = 0;
-            this.buttonSform.Text = "Сформировать";
-            this.buttonSform.UseVisualStyleBackColor = true;
-            this.buttonSform.Click += new System.EventHandler(this.buttonSform_Click);
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(167, 3);
+            this.buttonSave.Location = new System.Drawing.Point(196, 13);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(137, 54);
             this.buttonSave.TabIndex = 1;
             this.buttonSave.Text = "Сохранить в Pdf";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // buttonSform
+            // 
+            this.buttonSform.Location = new System.Drawing.Point(16, 13);
+            this.buttonSform.Name = "buttonSform";
+            this.buttonSform.Size = new System.Drawing.Size(145, 54);
+            this.buttonSform.TabIndex = 0;
+            this.buttonSform.Text = "Сформировать";
+            this.buttonSform.UseVisualStyleBackColor = true;
+            this.buttonSform.Click += new System.EventHandler(this.buttonSform_Click);
             // 
             // FormReportOrdersForAllDates
             // 

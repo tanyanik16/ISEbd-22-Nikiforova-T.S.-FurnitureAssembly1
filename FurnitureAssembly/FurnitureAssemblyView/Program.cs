@@ -60,8 +60,21 @@ namespace FurnitureAssemblyView
             HierarchicalLifetimeManager());
             currentContainer.RegisterType<IFurnitureLogic, FurnitureLogic>(new
             HierarchicalLifetimeManager());
-            
+            currentContainer.RegisterType<IReportLogic, ReportLogic>(new
+           HierarchicalLifetimeManager());
+            currentContainer.RegisterType<FurnitureSaveToExcel, SaveToExcel>(new
+            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<FurnitureSaveToWord, SaveToWord>(new
+            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<FurnitureSaveToPdf, SaveToPdf>(new
+            HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IStorehouseLogic, StorehouseLogic>(new
+          HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IStorehouseStorage, StoreHouseStorage>(new
+          HierarchicalLifetimeManager());
             return currentContainer;
+
+            
         }
 
     }

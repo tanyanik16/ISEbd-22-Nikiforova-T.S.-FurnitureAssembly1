@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FurnitureAssemblyBusinessLogic\FurnitureAssemblyBusinessLogic.csproj" />
+    <ProjectReference Include="..\FurnitureAssemblyContracts\FurnitureAssemblyContracts.csproj" />
     <ProjectReference Include="..\FurnitureAssemblyDatabaseImplement\FurnitureAssemblyDatabaseImplement.csproj" />
     <ProjectReference Include="..\FurnitureAssemblyFileImplement\FurnitureAssemblyFileImplement.csproj" />
     <ProjectReference Include="..\FurnitureAssemblyListImplement\FurnitureAssemblyListImplement.csproj" />

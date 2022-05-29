@@ -177,6 +177,7 @@ namespace FurnitureAssemblyView
 
         }
 
+
         private void складыПоКомпонентамToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Program.Container.Resolve<FormReportStoreHouseComponents>();
@@ -186,6 +187,20 @@ namespace FurnitureAssemblyView
         private void заказыПоДатамToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = Program.Container.Resolve<FormReportOrdersForAllDates>();
+            form.ShowDialog();
+     
+        }
+
+        private void пополнениеСкладаToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+            var form = Program.Container.Resolve<FormStorehouseReplenishment>();
+            form.ShowDialog();
+        }
+
+        private void складыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Program.Container.Resolve<FormStorehouses>();
             form.ShowDialog();
         }
     }

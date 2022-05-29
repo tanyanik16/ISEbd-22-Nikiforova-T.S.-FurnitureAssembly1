@@ -21,7 +21,7 @@ namespace FurnitureAssemblyView
         public new IUnityContainer Container { get; set; }
         private readonly IReportLogic logic;
         private readonly ReportViewer reportViewer;
-        public FormReportOrdersForAllDates()
+        public FormReportOrdersForAllDates(IReportLogic logic)
         {
             InitializeComponent();
             this.logic = logic;
