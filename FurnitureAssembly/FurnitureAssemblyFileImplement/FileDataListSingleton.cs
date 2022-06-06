@@ -57,11 +57,11 @@ namespace FurnitureAssemblyFileImplement
                 var xElements = xDocument.Root.Elements("Storehouse").ToList();
                 foreach (var elem in xElements)
                 {
-                    var WHComp = new Dictionary<int, int>();
+                    var CompComp = new Dictionary<int, int>();
                     foreach (var component in
                    elem.Element("StorehouseComponents").Elements("StorehouseComponent").ToList())
                     {
-                        WHComp.Add(Convert.ToInt32(component.Element("Key").Value),
+                        CompComp.Add(Convert.ToInt32(component.Element("Key").Value),
                        Convert.ToInt32(component.Element("Value").Value));
                     }
                     list.Add(new Storehouse
@@ -70,7 +70,7 @@ namespace FurnitureAssemblyFileImplement
                         StorehouseName = elem.Element("StorehouseName").Value,
                         ResponsiblePersonFCS = elem.Element("ResponsiblePersonFCS").Value,
                         DateCreate = Convert.ToDateTime(elem.Element("DateCreate").Value),
-                        StorehouseComponents = WHComp
+                        StorehouseComponents = CompComp
                     });
                 }
             }

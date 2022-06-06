@@ -5,6 +5,8 @@ using FurnitureAssemblyFileImplement.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
+
 namespace FurnitureAssemblyFileImplement.Implements
 {
     public class OrderStorage : IOrderStorage
@@ -25,7 +27,7 @@ namespace FurnitureAssemblyFileImplement.Implements
                 return null;
             }
             return source.Orders
-                .Where(rec => rec.FurnitureId.ToString().Contains(model.FurnitureId.ToString()))
+                .Where(rec => rec.Id.Equals(model.Id) || rec.DateCreate >= model.DateFrom && rec.DateCreate <= model.DateTo)
                 .Select(CreateModel).ToList();
         }
 
@@ -102,7 +104,7 @@ namespace FurnitureAssemblyFileImplement.Implements
                 DateCreate = order.DateCreate,
                 DateImplement = order.DateImplement,
                 Count = order.Count,
-                FurnitureName = furnitureName
+                FurnitureName = source.Furnitures.FirstOrDefault(rec => rec.Id == order.FurnitureId)?.FurnitureName
             };
         }
     }

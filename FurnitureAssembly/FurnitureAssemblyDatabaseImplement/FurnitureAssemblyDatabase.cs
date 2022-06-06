@@ -10,7 +10,7 @@ namespace FurnitureAssemblyDatabaseImplement
         {
             if (optionsBuilder.IsConfigured == false)
             {
-                optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=FurnitureAssemblyDatabase3;Trusted_Connection=True");
+                optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=FurnitureAssemblyDatabase4;Trusted_Connection=True");
             }
             base.OnConfiguring(optionsBuilder);
         }

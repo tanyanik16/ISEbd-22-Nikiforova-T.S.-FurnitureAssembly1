@@ -40,16 +40,15 @@ namespace FurnitureAssemblyView
             this.мебельToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.складыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пополнениеСкладаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчетыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.списокКомпонентовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.компонентыПоИзделиямToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.списокЗаказовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.списокСкладовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.складыПоКомпонентамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.заказыПоДатамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.пополнениеСкладаToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnIdFurniture = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDateCreate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDateEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.пополнениеСкладаToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -110,7 +109,8 @@ namespace FurnitureAssemblyView
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.справочникToolStripMenuItem,
             this.пополнениеСкладаToolStripMenuItem,
-            this.пополнениеСкладаToolStripMenuItem2});
+            this.отчетыToolStripMenuItem,
+            this.пополнениеСкладаToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(955, 28);
@@ -146,96 +146,84 @@ namespace FurnitureAssemblyView
             this.складыToolStripMenuItem.Name = "складыToolStripMenuItem";
             this.складыToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.складыToolStripMenuItem.Text = "Склады";
-            this.складыToolStripMenuItem.Click += new System.EventHandler(this.складыToolStripMenuItem_Click_1);
+            this.складыToolStripMenuItem.Click += new System.EventHandler(this.складыToolStripMenuItem_Click);
             // 
             // пополнениеСкладаToolStripMenuItem
             // 
             this.пополнениеСкладаToolStripMenuItem.Name = "пополнениеСкладаToolStripMenuItem";
             this.пополнениеСкладаToolStripMenuItem.Size = new System.Drawing.Size(14, 24);
             // 
+            // отчетыToolStripMenuItem
+            // 
+            this.отчетыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.списокКомпонентовToolStripMenuItem,
+            this.компонентыПоИзделиямToolStripMenuItem,
+            this.списокЗаказовToolStripMenuItem,
+            this.списокСкладовToolStripMenuItem,
+            this.складыПоКомпонентамToolStripMenuItem,
+            this.заказыПоДатамToolStripMenuItem});
+            this.отчетыToolStripMenuItem.Name = "отчетыToolStripMenuItem";
+            this.отчетыToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
+            this.отчетыToolStripMenuItem.Text = "Отчеты";
+            // 
+            // списокКомпонентовToolStripMenuItem
+            // 
+            this.списокКомпонентовToolStripMenuItem.Name = "списокКомпонентовToolStripMenuItem";
+            this.списокКомпонентовToolStripMenuItem.Size = new System.Drawing.Size(276, 26);
+            this.списокКомпонентовToolStripMenuItem.Text = "Список компонентов";
+            this.списокКомпонентовToolStripMenuItem.Click += new System.EventHandler(this.списокКомпонентовToolStripMenuItem_Click);
+            // 
+            // компонентыПоИзделиямToolStripMenuItem
+            // 
+            this.компонентыПоИзделиямToolStripMenuItem.Name = "компонентыПоИзделиямToolStripMenuItem";
+            this.компонентыПоИзделиямToolStripMenuItem.Size = new System.Drawing.Size(276, 26);
+            this.компонентыПоИзделиямToolStripMenuItem.Text = "Компоненты по изделиям";
+            this.компонентыПоИзделиямToolStripMenuItem.Click += new System.EventHandler(this.компонентыПоИзделиямToolStripMenuItem_Click);
+            // 
+            // списокЗаказовToolStripMenuItem
+            // 
+            this.списокЗаказовToolStripMenuItem.Name = "списокЗаказовToolStripMenuItem";
+            this.списокЗаказовToolStripMenuItem.Size = new System.Drawing.Size(276, 26);
+            this.списокЗаказовToolStripMenuItem.Text = "Список заказов";
+            this.списокЗаказовToolStripMenuItem.Click += new System.EventHandler(this.списокЗаказовToolStripMenuItem_Click);
+            // 
+            // списокСкладовToolStripMenuItem
+            // 
+            this.списокСкладовToolStripMenuItem.Name = "списокСкладовToolStripMenuItem";
+            this.списокСкладовToolStripMenuItem.Size = new System.Drawing.Size(276, 26);
+            this.списокСкладовToolStripMenuItem.Text = "Список складов";
+            this.списокСкладовToolStripMenuItem.Click += new System.EventHandler(this.списокСкладовToolStripMenuItem_Click);
+            // 
+            // складыПоКомпонентамToolStripMenuItem
+            // 
+            this.складыПоКомпонентамToolStripMenuItem.Name = "складыПоКомпонентамToolStripMenuItem";
+            this.складыПоКомпонентамToolStripMenuItem.Size = new System.Drawing.Size(276, 26);
+            this.складыПоКомпонентамToolStripMenuItem.Text = "Склады по компонентам";
+            this.складыПоКомпонентамToolStripMenuItem.Click += new System.EventHandler(this.складыПоКомпонентамToolStripMenuItem_Click);
+            // 
+            // заказыПоДатамToolStripMenuItem
+            // 
+            this.заказыПоДатамToolStripMenuItem.Name = "заказыПоДатамToolStripMenuItem";
+            this.заказыПоДатамToolStripMenuItem.Size = new System.Drawing.Size(276, 26);
+            this.заказыПоДатамToolStripMenuItem.Text = "Заказы по датам";
+            this.заказыПоДатамToolStripMenuItem.Click += new System.EventHandler(this.заказыПоДатамToolStripMenuItem_Click);
+            // 
+            // пополнениеСкладаToolStripMenuItem1
+            // 
+            this.пополнениеСкладаToolStripMenuItem1.Name = "пополнениеСкладаToolStripMenuItem1";
+            this.пополнениеСкладаToolStripMenuItem1.Size = new System.Drawing.Size(162, 24);
+            this.пополнениеСкладаToolStripMenuItem1.Text = "Пополнение склада";
+            this.пополнениеСкладаToolStripMenuItem1.Click += new System.EventHandler(this.пополнениеСкладаToolStripMenuItem1_Click);
+            // 
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnId,
-            this.ColumnIdFurniture,
-            this.ColumnName,
-            this.ColumnCount,
-            this.ColumnSum,
-            this.ColumnStatus,
-            this.ColumnDateCreate,
-            this.ColumnDateEnd});
             this.dataGridView.Location = new System.Drawing.Point(0, 43);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersWidth = 51;
             this.dataGridView.RowTemplate.Height = 29;
             this.dataGridView.Size = new System.Drawing.Size(804, 316);
             this.dataGridView.TabIndex = 6;
-            // 
-            // ColumnId
-            // 
-            this.ColumnId.HeaderText = "ColumnId";
-            this.ColumnId.MinimumWidth = 6;
-            this.ColumnId.Name = "ColumnId";
-            this.ColumnId.Visible = false;
-            this.ColumnId.Width = 125;
-            // 
-            // ColumnIdFurniture
-            // 
-            this.ColumnIdFurniture.HeaderText = "ColumnIdFurniture";
-            this.ColumnIdFurniture.MinimumWidth = 6;
-            this.ColumnIdFurniture.Name = "ColumnIdFurniture";
-            this.ColumnIdFurniture.Visible = false;
-            this.ColumnIdFurniture.Width = 125;
-            // 
-            // ColumnName
-            // 
-            this.ColumnName.HeaderText = "Мебель";
-            this.ColumnName.MinimumWidth = 6;
-            this.ColumnName.Name = "ColumnName";
-            this.ColumnName.Width = 125;
-            // 
-            // ColumnCount
-            // 
-            this.ColumnCount.HeaderText = "Количество";
-            this.ColumnCount.MinimumWidth = 6;
-            this.ColumnCount.Name = "ColumnCount";
-            this.ColumnCount.Width = 125;
-            // 
-            // ColumnSum
-            // 
-            this.ColumnSum.HeaderText = "Сумма";
-            this.ColumnSum.MinimumWidth = 6;
-            this.ColumnSum.Name = "ColumnSum";
-            this.ColumnSum.Width = 125;
-            // 
-            // ColumnStatus
-            // 
-            this.ColumnStatus.HeaderText = "Статус";
-            this.ColumnStatus.MinimumWidth = 6;
-            this.ColumnStatus.Name = "ColumnStatus";
-            this.ColumnStatus.Width = 125;
-            // 
-            // ColumnDateCreate
-            // 
-            this.ColumnDateCreate.HeaderText = "Дата создания";
-            this.ColumnDateCreate.MinimumWidth = 6;
-            this.ColumnDateCreate.Name = "ColumnDateCreate";
-            this.ColumnDateCreate.Width = 125;
-            // 
-            // ColumnDateEnd
-            // 
-            this.ColumnDateEnd.HeaderText = "Дата выполнения";
-            this.ColumnDateEnd.MinimumWidth = 6;
-            this.ColumnDateEnd.Name = "ColumnDateEnd";
-            this.ColumnDateEnd.Width = 125;
-            // 
-            // пополнениеСкладаToolStripMenuItem2
-            // 
-            this.пополнениеСкладаToolStripMenuItem2.Name = "пополнениеСкладаToolStripMenuItem2";
-            this.пополнениеСкладаToolStripMenuItem2.Size = new System.Drawing.Size(162, 24);
-            this.пополнениеСкладаToolStripMenuItem2.Text = "Пополнение склада";
-            this.пополнениеСкладаToolStripMenuItem2.Click += new System.EventHandler(this.пополнениеСкладаToolStripMenuItem1_Click);
             // 
             // FormMain
             // 
@@ -273,18 +261,16 @@ namespace FurnitureAssemblyView
         private System.Windows.Forms.ToolStripMenuItem компонентыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem мебельToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnIdFurniture;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateCreate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDateEnd;
-        private System.Windows.Forms.ToolStripMenuItem пополнениеСкладаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem пополнениеСкладаToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem складыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem пополнениеСкладаToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem пополнениеСкладаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отчетыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem списокКомпонентовToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem компонентыПоИзделиямToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem списокЗаказовToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem списокСкладовToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem складыПоКомпонентамToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem заказыПоДатамToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem пополнениеСкладаToolStripMenuItem1;
     }
 }
 

@@ -11,17 +11,21 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.16" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.14">
-      <PrivateAssets>all</PrivateAssets>
+
+			<PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Unity" Version="5.11.10" />
+    <PackageReference Include="ReportViewerCore.NETCore" Version="15.1.16" />
+	  <PackageReference Include="ReportViewerCore.WinForms" Version="15.1.16" />
+	  <PackageReference Include="Unity" Version="5.11.10" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FurnitureAssemblyBusinessLogic\FurnitureAssemblyBusinessLogic.csproj" />
+    <ProjectReference Include="..\FurnitureAssemblyContracts\FurnitureAssemblyContracts.csproj" />
     <ProjectReference Include="..\FurnitureAssemblyDatabaseImplement\FurnitureAssemblyDatabaseImplement.csproj" />
     <ProjectReference Include="..\FurnitureAssemblyFileImplement\FurnitureAssemblyFileImplement.csproj" />
     <ProjectReference Include="..\FurnitureAssemblyListImplement\FurnitureAssemblyListImplement.csproj" />
   </ItemGroup>
-
+	
 </Project>
